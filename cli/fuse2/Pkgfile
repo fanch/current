@@ -1,0 +1,18 @@
+# Description: A library that makes it possible to implement a filesystem in a userspace program.
+# URL: http://fuse.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: doxygen
+
+name=fuse2
+version=2.9.8
+release=1
+
+source=(https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.gz)
+
+build() {
+    cd fuse-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -r $PKG/{dev,etc}
+}

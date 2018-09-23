@@ -1,0 +1,21 @@
+# Depends on: xorgproto xorg-libx11 xorg-libxext xorg-libxt xorg-libxmu xorg-libxpm xorg-libxau
+
+description="libXaw, X Athena Widgets toolkit"
+url="http://xorg.freedesktop.org"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B, Greg"
+ 
+name=xorg-libxaw
+version=1.0.13
+release=3
+_name=libXaw
+
+source=(http://ftp.x.org/pub/individual/lib/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+rm $PKG/usr/lib/${_name}{6,7}.la
+}
+

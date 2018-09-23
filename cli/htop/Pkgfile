@@ -1,0 +1,30 @@
+# Depends on: libnl python2 strace lsof
+
+description="an interactive process viewer"
+url="http://htop.sourceforge.net/"
+packager="greg <greg@nutyx.org>"
+contributors="Fanch, Tnut"
+
+name=htop
+version=2.2.0
+release=1
+
+source=(https://hisham.hm/htop/releases/$version/$name-$version.tar.gz
+		0001-fix-option-string.patch)
+
+
+build() {
+    cd $name-$version
+    find . -type f -exec sed -i 's/python/python2/g' {} \+
+    patch -Np1 < $SRC/0001-fix-option-string.patch
+    ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --enable-cgroup \
+      --enable-delayacct \
+      --enable-openvz \
+      --enable-unicode \
+      --enable-vserver
+    make
+    make DESTDIR=$PKG install
+}

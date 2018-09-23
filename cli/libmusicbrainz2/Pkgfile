@@ -1,0 +1,26 @@
+# Description: Library That Provides Access to the MusicBrainz Server
+# URL: http://musicbrainz.org/doc/libmusicbrainz
+# Packager: pierre at nutyx dot org
+# Depends on: python2
+
+name=libmusicbrainz2
+version=2.1.5
+release=1
+
+source=(ftp://ftp.musicbrainz.org/pub/musicbrainz/historical/libmusicbrainz-$version.tar.gz
+		libmusicbrainz-$version-missing-includes-1.patch )
+
+build() {
+cd libmusicbrainz-$version
+patch -Np1 -i ../libmusicbrainz-$version-missing-includes-1.patch
+CXXFLAGS=-std=c++98 \
+./configure --prefix=/usr --disable-static
+make
+cd python
+python2 setup.py build
+cd ..
+make DESTDIR=$PKG install
+mkdir -p $PKG/usr/share/doc/libmusicbrainz-$version
+install -v -m644 -D docs/mb_howto.txt \
+$PKG/usr/share/doc/libmusicbrainz-$version/mb_howto.txt
+}

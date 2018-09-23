@@ -1,0 +1,27 @@
+# Description: Varnish is a web application accelerator. 
+# URL: http://www.varnish-cache.org/
+# Packager: alieanus at nutyx dot org, tnut at nutyx dot org
+# Depends on: libedit pcre python-docutils 
+
+name=varnish
+version=5.2.1
+release=1
+
+source=(https://github.com/varnishcache/varnish-cache/archive/varnish-$version.tar.gz
+varnish.service 	hack-up-vcstools-to-work-with-python-2-and-3.patch)
+
+build(){
+    cd $name-cache-varnish-$version
+    patch -Np1 < $SRC/hack-up-vcstools-to-work-with-python-2-and-3.patch
+    ./autogen.sh
+    ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var/lib \
+    --sbindir=/usr/bin
+    make
+    make DESTDIR=$PKG install
+
+    # install the varnish init script
+    install -Dm755 $SRC/$name.service $PKG/etc/rc.d/init.d/$name
+}

@@ -1,0 +1,19 @@
+# Description: A diagnostic, debugging and instructional userspace tracer.
+# URL: https://strace.io/
+# Packager: pierre at nutyx dot org
+# Depends on: libunwind 
+
+name=strace
+version=4.24
+release=1
+
+source=(https://github.com/strace/strace/releases/download/v$version/strace-$version.tar.xz)
+
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+    --with-libunwind
+make
+make DESTDIR=$PKG install
+}  

@@ -1,0 +1,18 @@
+description="Lightweight system for writing, administering, and running unit tests in C"
+url="https://github.com/BelledonneCommunications/bcunit"
+packager="tnut <tnut@nutyx.org>"
+contributors="Greg"
+
+name=bcunit
+version=3.0
+release=1
+source=(https://github.com/BelledonneCommunications/$name/archive/cf1aaa36c5738c25e59c8fafbade388a0081cd53.tar.gz)
+
+build() {
+  cd $name-cf1aaa36c5738c25e59c8fafbade388a0081cd53
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+  rm -r $PKG/usr/doc
+}

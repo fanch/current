@@ -1,0 +1,22 @@
+# Description: The World-Wide Web library for Perl
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-encode-locale perl-file-listing perl-html-parser perl-http-cookies perl-http-daemon perl-http-date perl-http-negotiate perl-lwp-mediatypes perl-net-http perl-uri perl-www-robotrules perl-http-message 
+run=( perl )
+
+name=perl-libwww
+version=6.33
+release=1
+
+source=(https://cpan.metacpan.org/authors/id/O/OA/OALDERS/libwww-perl-$version.tar.gz)
+
+build() {
+cd libwww-perl-$version
+perl Makefile.PL  --aliases IINSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

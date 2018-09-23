@@ -1,0 +1,16 @@
+# Description: A Free Implementation of the Unicode Bidirectional Algorithm
+# URL: http://fribidi.freedesktop.org/wiki/
+# Packager: pierre at nutyx dot org
+# Depends on: glib meson ninja 
+
+name=fribidi
+version=0.19.7
+release=1
+source=(https://github.com/fribidi/fribidi/releases/download/0.19.7/fribidi-0.19.7.tar.bz2)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

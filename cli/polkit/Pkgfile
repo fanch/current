@@ -1,0 +1,37 @@
+# Description: Application development toolkit for controlling system-wide privileges
+# URL: http://hal.freedesktop.org/docs/polkit
+# Packager: pierre at nutyx dot org
+# Depends on: glib js52 gobject-introspection intltool libxslt docbook-xsl
+
+name=polkit
+version=0.114
+release=1
+
+source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+sed -e '/JS_ReportWarningUTF8/s/,/, "%s",/'  \
+        -i  src/polkitbackend/polkitbackendjsauthority.cpp
+./configure --prefix=/usr                    \
+            --sysconfdir=/etc                \
+            --localstatedir=/var             \
+            --disable-static                 \
+            --enable-libsystemd-login=no     \
+            --enable-libelogind=no           \
+            --with-authfw=shadow
+make||make -j1
+make DESTDIR=$PKG install
+
+mkdir -p $PKG/etc/pam.d
+cat > $PKG/etc/pam.d/polkit-1 << "EOF"
+# Begin /etc/pam.d/polkit-1
+
+auth     include        system-auth
+account  include        system-account
+password include        system-password
+session  include        system-session
+
+# End /etc/pam.d/polkit-1
+EOF
+}

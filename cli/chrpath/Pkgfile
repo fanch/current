@@ -1,0 +1,23 @@
+description="Modify the dynamic library load path (rpath and runpath) of compiled programs and libraries."
+url="https://www.openhub.net/p/chrpath"
+packager="tnut at nutyx dot org"
+
+name=chrpath
+version=0.16.1
+release=1
+
+source=(http://ftp.de.debian.org/debian/pool/main/c/chrpath/chrpath_${version%.*}.orig.tar.gz
+        http://ftp.de.debian.org/debian/pool/main/c/chrpath/chrpath_${version%.*}-${version##*\.}.diff.gz)
+
+build() {
+  gzip -d chrpath_${version%.*}-${version##*\.}.diff.gz
+  cd $name-${version%.*}
+  patch -p1 < ../chrpath_${version%.*}-${version##*\.}.diff
+
+  ./configure --prefix=/usr --mandir=/usr/man
+
+  make
+  make DESTDIR=$PKG install
+  
+  rm -r $PKG/usr/doc
+}

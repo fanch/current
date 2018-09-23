@@ -1,0 +1,21 @@
+# Description: SCons is a free tool construction allows replacement of make.
+# URL: http://scons.org
+# Packager: pierre at nutyx dot org
+# Depends on: python2 
+
+name=scons
+version=3.0.1
+release=1
+
+source=(http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
+build () 
+{ 
+cd $name-$version
+python2 setup.py install --standard-lib \
+						 --prefix=/usr \
+						 --install-data=/usr/share \
+						 --root=$PKG \
+						 --optimize=1
+sed -i 's:^#!.*bin/env python:#!/usr/bin/env python2:' \
+    $PKG/usr/bin/*						 
+}

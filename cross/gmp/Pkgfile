@@ -1,0 +1,12 @@
+name=gmp
+version=6.0.0a
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+build() {
+cd $name-${version/a//}
+./configure  \
+   --prefix=/cross-tools \
+   --enable-cxx   \
+   --disable-static
+make
+make install
+}

@@ -1,0 +1,22 @@
+description="C/C++ configuration file library
+url="http://www.hyperrealm.com/libconfig/
+contributors="berlius, Greg"
+packager="tnut <tnut@nutyx.org>"
+
+PKGMK_KEEP_SOURCES="no"
+
+name=libconfig
+version=1.7.2
+release=1
+
+source=()
+
+build() {
+git clone https://github.com/hyperrealm/libconfig.git $name
+cd $name
+ autoreconf -vi
+./configure --prefix=/usr
+  make
+make DESTDIR=$PKG install
+rm $PKG/usr/share/info/dir
+}

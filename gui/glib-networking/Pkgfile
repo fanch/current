@@ -1,0 +1,25 @@
+# Depends on: meson ninja glib dbus gnutls libgcrypt gsettings-desktop-schemas p11-kit 
+
+description="Network-related giomodules for glib"
+url="http://www.gnome.org/"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+run=(gsettings-desktop-schemas )
+
+name=glib-networking
+version=2.56.1
+release=3
+
+source=()
+
+build () {
+git clone https://git.gnome.org/browse/glib-networking.git $name
+cd $name
+meson build \
+		--prefix /usr \
+		-Dlibproxy_support=false \
+		-Dca_certificates_path=/etc/ssl/ca-bundle.crt 
+ninja -C build -j1
+DESTDIR=$PKG ninja -C build install
+}

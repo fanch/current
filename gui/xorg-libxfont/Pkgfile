@@ -1,0 +1,22 @@
+# Depends on: freetype xorgproto xorg-xtrans xorg-libfontenc
+
+description="libXfont, library Xorg"
+url="http://xorg.freedesktop.org"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+name=xorg-libxfont
+alias=(libXfont)
+version=1.5.4
+release=3
+_name=libXfont
+
+source=(http://ftp.x.org/pub/individual/lib/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+rm $PKG/usr/lib/${_name}.la
+}
+

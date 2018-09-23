@@ -1,0 +1,25 @@
+description="Shared library for mediainfo."
+url="http://mediainfo.sourceforge.net/"
+contributors="alienus, fanch, tnut"
+packager="greg<greg@nutyx.org>"
+
+# Depends on: libmms libzen curl
+
+name=libmediainfo
+version=18.05
+release=1
+
+source=(https://mediaarea.net/download/source/libmediainfo/$version/libmediainfo_$version.tar.xz)
+
+build() {
+  cd $SRC/MediaInfoLib/Project/GNU/Library
+  
+  ./autogen.sh
+   ./configure --prefix=/usr \
+              --enable-shared \
+              --disable-static \
+              --with-libcurl \
+              --with-libmms
+  make
+  make DESTDIR=$PKG install
+}

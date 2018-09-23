@@ -1,0 +1,27 @@
+# Depends on: gnutls libpcap gpgme libssh glib openldap hiredis cmake doxygen libksba
+
+description="The OpenVAS libraries"
+url="http://www.openvas.org/"
+packager="greg<greg@nutyx.org>"
+contributors=""
+
+run=()
+
+name=openvas-libraries
+version=9.0.1
+release=1
+
+source=(http://wald.intevation.org/frs/download.php/2420/$name-${version}.tar.gz)
+
+build() {
+cd $name-$version
+LDFLAGS+=" -Wl,--no-as-needed"
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+-DLIBDIR=/usr/lib -DSYSCONFDIR=/etc -DLOCALSTATEDIR=/var .
+make
+make DESTDIR=$PKG/ install
+rmdir $PKG/var/run
+}
+
+
+

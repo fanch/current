@@ -1,0 +1,30 @@
+# Description: A portable sound library
+# URL: http://mikmod.raphnet.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=libmikmod
+version=3.1.11
+release=1
+
+source=(http://mikmod.raphnet.net/files/$name-$version.tar.gz)
+
+
+build() {
+cd $name-$version
+patch -Np1 -i ../$name-$version-a.diff &&
+sed -i -e "s/VERSION=10/VERSION=11/" \
+       -e "s/sys_asoundlib/alsa_asoundlib/" \
+       -e "s/snd_cards/snd_card_load/g" \
+       -e "s|sys/asoundlib.h|alsa/asoundlib.h|g" \
+       -e "s/^LIBOBJS/#LIBOBJS/" \
+    configure.in 
+autoconf &&
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+chmod 755 $PKG/usr/lib/$name.so.2.0.4
+install -v -m644 -D docs/mikmod.html \
+    $PKG/usr/share/doc/$name-$version/mikmod.html
+rm -f $PKG/usr/share/info/dir
+}

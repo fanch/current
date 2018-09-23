@@ -1,0 +1,22 @@
+# Description: The BIND package includes the client side programs nslookup, dig and host. 
+# URL: http://www.isc.org/downloads/bind/ 
+# Packager: tnut at nutyx dot org
+# Depends on: kerberos libxml2 
+
+name=bind
+version=9.13.2
+release=1
+
+source=(ftp://ftp.isc.org/isc/bind9/$version/$name-$version.tar.gz)
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+	make -C lib/dns
+	make -C lib/isc
+	make -C lib/bind9
+	make -C lib/isccfg
+	make -C lib/irs
+	make -C bin/dig
+	make DESTDIR=$PKG -C bin/dig install
+}

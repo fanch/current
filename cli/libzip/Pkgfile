@@ -1,0 +1,20 @@
+# Depends: cmake
+# Description: A C library for reading, creating, and modifying zip archives
+# URL: http://www.nih.at/libzip/index.html
+# Packager: pierre at nutyx dot org
+
+name=libzip
+version=1.5.1
+release=1
+
+source=(https://libzip.org/download/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+	mkdir build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    ..
+  make
+  make DESTDIR=$PKG install
+}

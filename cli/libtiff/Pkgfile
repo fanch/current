@@ -1,0 +1,20 @@
+# Description: Library for manipulation of TIFF images
+# URL: http://www.remotesensing.org/libtiff/
+# Packager: pierre at nutyx dot org
+# Depends on: libjpeg-turbo 
+
+name=libtiff
+version=4.0.9
+release=2
+
+source=(http://download.osgeo.org/libtiff/tiff-$version.tar.gz)
+
+build() {
+    cd tiff-$version
+
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -r $PKG/usr/{bin,share/{doc,man/man1}}
+}
+

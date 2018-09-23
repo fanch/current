@@ -1,0 +1,15 @@
+# Description: Easily download, build, install, upgrade, and uninstall Python packages
+# URL: https://bitbucket.org/pypa/setuptools
+# Packager: alienus at nutyx dot org
+# Depends on: python2 python
+
+name=python-setuptools
+version=40.0.0
+release=2
+source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.zip)
+        
+build() {
+    cd setuptools-$version
+    python2 setup.py build install --root=$PKG
+    python3 setup.py build install --root=$PKG       
+}

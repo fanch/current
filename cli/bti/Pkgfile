@@ -1,0 +1,19 @@
+# Description: bti (twitter/identi.ca console client)
+# URL: http://gregkh.github.com/bti/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: cyrus-sasl json-c libidn liboauth libxml2 openldap pcre 
+
+name=bti
+version=034
+release=2
+
+source=(http://www.kernel.org/pub/software/web/$name/$name-$version.tar.xz
+		0001-Replace-removed-is_error-macro.patch)
+
+build(){
+    cd $name-$version
+    patch -Np1 -i $srcdir/0001-Replace-removed-is_error-macro.patch
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

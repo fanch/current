@@ -1,0 +1,18 @@
+# Description: A tool for generating C-based recognizers from regular expressions 
+# URL: http://re2c.sourceforge.net/
+# Packager: pierre at nutyx dot org
+# Depends on: 
+
+name=re2c
+version=1.0.3
+release=1
+source=(https://github.com/skvadrik/$name/releases/download/$version/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr
+	make bootstrap
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,17 @@
+description="Set of utilities and libraries for handling elf files."
+url="http://xiph.org/ao/"
+packager="tnut <tnut@nutyx.org>"
+
+name=elfutils
+version=0.173
+release=1
+
+source=( https://sourceware.org/elfutils/ftp/$version/elfutils-$version.tar.bz2 )
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--program-prefix="eu-"
+make
+make prefix=$PKG/usr install
+}

@@ -1,0 +1,25 @@
+# Depends on: intltool sqlite telepathy-glib gobject-introspection python2
+
+description="Telepathy framework logging daemon"
+url="http://telepathy.freedesktop.org/"
+packager="greg <greg@nutyx.org>"
+contributors="Pierre B"
+
+name=telepathy-logger
+version=0.8.2
+release=2
+
+source=(http://${name%-*}.freedesktop.org/releases/$name/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+PYTHON=python2 ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/telepathy \
+    --enable-call \
+    --disable-static \
+    --disable-scrollkeeper \
+    --disable-schemas-compile
+make
+make DESTDIR=$PKG install
+}

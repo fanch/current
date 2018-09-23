@@ -1,0 +1,46 @@
+# Depends : python
+
+description="PC/SC Architecture smartcard middleware library"
+url="https://alioth.debian.org/projects/pcsclite/"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+name=pcsclite
+version=1.8.23
+release=2
+
+source=(https://pcsclite.apdu.fr/files/pcsc-lite-${version}.tar.bz2
+	pcscd)
+
+build() {
+   cd pcsc-lite-$version
+  ./configure --prefix=/usr \
+              --sbindir=/usr/bin \
+              --enable-libudev \
+              --disable-libsystemd \
+              --sysconfdir=/etc \
+              --enable-ipcdir=/run/pcscd \
+              --enable-usbdropdir=/usr/lib/pcsc/drivers \
+              --with-systemdsystemunitdir=/usr/lib/systemd/system
+
+  make
+  make DESTDIR=$PKG install
+
+  install -d $PKG/usr/lib/pcsc/drivers
+
+  # Service
+  mkdir -p $PKG/etc/rc.d/init.d
+  install -m755 ../pcscd $PKG/etc/rc.d/init.d/pcscd
+  for i in 0 1 2 3 4 5 6
+  do
+   mkdir -p $PKG/etc/rc.d/rc${i}.d
+  done
+  for i in 3 4 5
+  do
+   ln -sf ../init.d/pcscd $PKG/etc/rc.d/rc${i}.d/S90pcscd
+  done
+  for i in 0 1 2 6
+  do
+   ln -sf ../init.d/pcscd$PKG/etc/rc.d/rc${i}.d/K01pcscd
+  done
+}

@@ -1,0 +1,16 @@
+# Description: Python module that implements the next generation YAML parser and emitter
+# URL: http://pyyaml.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python-setuptools
+
+name=python-pyaml
+version=17.12.1
+release=1
+
+source=(https://pypi.io/packages/source/p/pyaml/pyaml-$version.tar.gz)
+
+build() {
+cd pyaml-$version
+python2 setup.py build
+python2 setup.py install --optimize=1 --root=$PKG
+}

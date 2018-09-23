@@ -1,0 +1,16 @@
+# Description: A terminal multiplexer
+# URL: https://tmux.github.io
+# Packager: tnut at nutyx.org
+# Depends on: libevent libutempter
+name=tmux
+version=2.7
+release=1
+
+source=(https://github.com/tmux/tmux/releases/download/$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure \
+		--prefix=/usr \
+		--enable-utempter
+make DESTDIR=$PKG install
+}

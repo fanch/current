@@ -1,0 +1,21 @@
+#Depends on:
+
+description="tool like grep, aimed at programmers with large trees of heterogeneous source code"
+url="http://beyondgrep.com/"
+contributors="berlius"
+packager="greg<greg@nutyx.org>"
+
+
+name=ack
+version=2.24
+release=1
+
+source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/$name-$version.tar.gz)
+
+build() {
+  cd $SRC/$name-$version
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make DESTDIR=$PKG install
+  rm -r $PKG/usr/lib/share/perl5/base/perllocal.pod
+}    

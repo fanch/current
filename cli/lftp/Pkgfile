@@ -1,0 +1,21 @@
+# Depends: gnutls
+# Description: lftp is a sophisticated ftp/http client.
+# URL: lftp is a sophisticated ftp/http client.
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+
+name=lftp
+version=4.8.4
+release=1
+
+source=(http://lftp.yar.ru/ftp/$name-$version.tar.xz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+    --with-gnutls \
+    --without-openssl \
+    --without-included-regex \
+    --disable-static
+make
+make DESTDIR=$PKG install
+rm -rf $PKG/usr/lib
+}

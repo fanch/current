@@ -1,0 +1,20 @@
+# Depends on: xorg-libdrm xorg-libxvmc mesa xorg-server
+
+description="Xorg drivers"
+packager="tnut <tnut@nutyx.org>"
+
+name=xorg-xf86-video-openchrome
+release=1
+version=0.6.0
+_name=${name/xorg-/}
+
+source=(http://ftp.x.org/pub/individual//driver/${_name}-$version.tar.bz2)
+
+build=xorg
+
+build() {
+	cd ${_name}-$version
+	./configure --prefix=/usr
+	make 
+	make DESTDIR=$PKG install
+}

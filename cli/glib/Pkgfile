@@ -1,0 +1,29 @@
+# Description: The GLib package contains a low-level libraries useful for providing data structure handling
+# URL: http://www.gtk.org/
+# Packager: tnut at nutyx dot org
+# Depends on: libffi pcre python elfutils 
+PKGMK_GROUPS=(man devel doc )
+
+name=glib
+version=2.58.0
+release=1
+
+source=(http://ftp.gnome.org/pub/gnome/sources/glib/${version%.*}/$name-$version.tar.xz
+        seascape-27194-1920x1200.jpg
+        $name-$version-skip_warnings-1.patch)
+
+build () {
+	cd $name-$version
+	patch -Np1 -i ../$name-$version-skip_warnings-1.patch
+	NOCONFIGURE=1 ./autogen.sh
+		./configure --prefix=/usr      \
+            --with-pcre=system \
+            --with-python=/usr/bin/python3
+	make
+	make DESTDIR=$PKG install
+	
+	# Default NuTyX Wallpaper
+	install -D -m644 ../seascape-27194-1920x1200.jpg \
+	$PKG/usr/share/backgrounds/nutyx/nutyx.jpg
+}
+

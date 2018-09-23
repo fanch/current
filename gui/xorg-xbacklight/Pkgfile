@@ -1,0 +1,21 @@
+# Depends on: xcb-util
+
+description="RandR-based backlight control application."
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+PKGMK_GROUPS=(doc man)
+url="http://xorg.freedesktop.org"
+
+name=xorg-xbacklight
+version=1.2.2
+release=1
+_name=${name/xorg-/}
+
+source=(http://ftp.x.org/pub/individual/app/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+}

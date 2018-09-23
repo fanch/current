@@ -1,0 +1,31 @@
+# Description: Google Test - C++ testing utility based on the xUnit framework (like JUnit)
+# URL: http://code.google.com/p/googletest
+# Packager: pierre at nutyx dot org
+# Depends on: cmake python2
+
+name=gmock
+version=1.8.0
+release=3
+
+source=(https://github.com/google/googletest/archive/release-${version}.tar.gz
+        gmock-install.patch
+        gmock.pc.in)
+
+build() {
+  cd googletest-release-${version}
+  find -name '*.py' -exec sed -i 's|env python|env python2|g' {} \;
+    
+  patch -p1 < $SRC/gmock-install.patch
+  cd googlemock
+  cp "${SRC}/gmock.pc.in" .
+  autoreconf -fvi
+  
+  autoreconf -fvi
+  ./configure --prefix=/usr --with-gtest --enable-external-gtest
+  make
+  
+  make --trace -w -j1 DESTDIR=$PKG install
+  install -Dm 755 scripts/gmock-config -t $PKG/usr/bin
+  install -Dm 644 include/gmock/internal/custom/* -t \
+  $PKG/usr/include/gmock/internal/custom
+}

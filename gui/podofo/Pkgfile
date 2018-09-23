@@ -1,0 +1,31 @@
+# Depends on: cmake xorg-fontconfig freetype libidn libpng libtiff lua51 
+
+description="C++ library to work with the PDF file format"
+url="http://podofo.sourceforge.net"
+packager="tnut <tnut@nutyx.org>"
+contributors="Alienus"
+
+name=podofo
+version=0.9.6
+release=1
+source=(https://sourceforge.net/projects/$name/files/$name/$version/$name-$version.tar.gz
+        podofo-cmake-3.12.patch       )
+
+build() {
+	cd $name-$version
+	patch -p0 -i $SRC/podofo-cmake-3.12.patch
+	sed -e '/FIND_PACKAGE(LUA).*/d' -i CMakeLists.txt
+	mkdir podofo-build
+	cd podofo-build
+	cmake -G "Unix Makefiles" \
+		-DCMAKE_INSTALL_PREFIX="/usr/podofo" \
+		-DPODOFO_HAVE_LUA="" \
+		-DPODOFO_BUILD_SHARED:BOOL=TRUE \
+		-DPODOFO_BUILD_STATIC:BOOL=FALSE \
+		-DCMAKE_BUILD_TYPE=RELEASE \
+		..
+	make
+	make DESTDIR=$PKG install
+	mkdir -p $PKG/etc/ld.so.conf.d
+	echo "/usr/podofo/lib" > $PKG/etc/ld.so.conf.d/$name.conf
+}

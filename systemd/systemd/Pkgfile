@@ -1,0 +1,54 @@
+# Depends on: intltool perl-xml-parser dbus polkit ca-certificates elfutils gnutls iptables libgcrypt libidn libxkbcommon python3 valgrind meson
+
+description="system and service manager"
+url="http://www.freedesktop.org/wiki/Software/systemd"
+
+packager="tnut at nutyx dot org"
+
+name=systemd
+version=239
+release=1
+
+PKGMK_GROUPS=(devel doc man lib)
+#PKGMK_KEEP_SOURCES="no"
+source=(https://github.com/systemd/systemd/archive/v$version/$name-$version.tar.gz
+		systemd-239-glibc_statx_fix-1.patch)
+
+build() {
+
+cd $name-$version
+
+patch -Np1 -i ../systemd-239-glibc_statx_fix-1.patch
+
+sed -i 's/GROUP="render", //' rules/50-udev-default.rules.in
+
+mkdir build 
+cd    build 
+
+meson --prefix=/usr         \
+      --sysconfdir=/etc     \
+      --localstatedir=/var  \
+      -Dblkid=true          \
+      -Dbuildtype=release   \
+      -Ddefault-dnssec=no   \
+      -Dfirstboot=false     \
+      -Dinstall-tests=false \
+      -Dldconfig=false      \
+      -Drootprefix=         \
+      -Drootlibdir=/lib     \
+      -Dsplit-usr=true      \
+      -Dsysusers=false      \
+      -Db_lto=false         \
+      ..                  
+ninja
+
+DESTDIR=$PKG ninja install
+
+rm -rfv $PKG/usr/lib/rpm
+
+for tool in runlevel reboot shutdown poweroff halt telinit; do
+     ln -sfv ../bin/systemctl $PKG/sbin/${tool}
+done
+ln -sfv ../lib/systemd/systemd $PKG/sbin/init
+
+}

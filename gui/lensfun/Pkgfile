@@ -1,0 +1,22 @@
+# Depends on: cmake glib libpng doxygen 
+
+description="database of photographic lenses and a library that allows advanced access to the database"
+url="http://lensfun.berlios.de"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+name=lensfun
+version=0.3.2
+release=2
+
+source=(http://sourceforge.net/projects/$name/files/$version/$name-$version.tar.gz
+		lensfun-fix-python-install-dir.patch)
+build(){
+cd $name-$version
+patch -p1 -i ../lensfun-fix-python-install-dir.patch
+mkdir build
+cd build
+cmake .. -DLENSFUN_INSTALL_PREFIX=/usr
+make all
+make DESTDIR=$PKG install
+} 

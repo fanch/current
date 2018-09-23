@@ -1,0 +1,21 @@
+description="Connect your computer to a network which uses DHCP to assign network addresses."
+url="http://roy.marples.name/projects/dhcpcd"
+maintainer="Roy Marples"
+packager="tnut <tnut@nutyx.org>"
+
+name=dhcpcd
+version=7.0.7
+release=1
+source=(http://roy.marples.name/downloads/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix= \
+--libexecdir=/lib/dhcpcd \
+--dbdir=/var/tmp
+make
+make DESTDIR=$PKG install
+
+# Encore un mechand bug
+rm -r $PKG/var/tmp
+}

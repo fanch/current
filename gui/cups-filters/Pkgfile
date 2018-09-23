@@ -1,0 +1,24 @@
+# Depends on: glib cups lcms2 poppler mupdf qpdf libjpeg-turbo libpng libtiff ghostscript avahi ijs harfbuzz 
+
+description="OpenPrinting CUPS Filters"
+url="http://www.cups.org"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+name=cups-filters
+version=1.20.4
+release=1
+source=(http://www.openprinting.org/download/$name/$name-$version.tar.xz
+		cups-filters-1.20.4-poppler67-1.patch)
+build() {
+cd $name-$version
+patch -Np1 -i ../cups-filters-1.20.4-poppler67-1.patch
+./configure --prefix=/usr                   \
+            --sysconfdir=/etc               \
+            --localstatedir=/var            \
+            --without-rcdir                 \
+            --disable-static                \
+            --docdir=/usr/share/doc/$name-$version
+make
+make DESTDIR=$PKG install
+}

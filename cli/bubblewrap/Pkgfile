@@ -1,0 +1,22 @@
+# Description: Unprivileged sandboxing tool
+# URL: https://github.com/projectatomic/bubblewrap/
+# packager="fanch<fanch@nutyx.org"
+# Depends on: libxslt docbook-xsl
+
+name=bubblewrap
+version=0.3.0
+release=1
+
+run=()
+
+source=(https://github.com/projectatomic/bubblewrap/releases/download/v$version/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr \
+		--with-priv-mode=setuid 
+	make
+	make DESTDIR=$PKG install
+}
+
+

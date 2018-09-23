@@ -1,0 +1,43 @@
+# Depends on: python cython cython2 python2 autoconf-archive python-setuptools 
+
+description="A library to handle Apple Property List format whereas it's binary or XML"
+url="http://libimobiledevice.org/"
+contributors=""
+packager="remy <remy@nutyx.org>"
+
+name=libplist
+version=2.0.0
+release=1
+
+PKGMK_KEEP_SOURCES="no"
+
+run=(python-setuptools)
+
+source=(https://github.com/libimobiledevice/libplist/archive/$version.tar.gz)
+
+build() {
+ cd $name-$version
+ NOCONFIGURE=1 ./autogen.sh
+ mkdir build-py2
+ pushd build-py2
+ PYTHON=/usr/bin/python2 CYTHON=/usr/bin/cython2 $SRC/$name-$version/configure --prefix=/usr
+ sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+ make
+ popd
+
+ mkdir build-py3
+ pushd build-py3
+ PYTHON=/usr/bin/python3 CYTHON=/usr/bin/cython $SRC/$name-$version/configure --prefix=/usr
+ sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+ make
+ popd  
+
+pushd build-py2
+make DESTDIR=$PKG install
+popd
+
+pushd build-py3/cython
+make DESTDIR=$PKG install
+popd
+install -D -m644 $SRC/$name-$version/cython/plist.pxd $PKG/usr/include/plist/cython/plist.pxd
+}

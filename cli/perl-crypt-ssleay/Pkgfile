@@ -1,0 +1,21 @@
+# Description: OpenSSL glue that provides LWP https support
+# URL: OpenSSL glue that provides LWP https support
+# Packager: pierre at nutyx dot org
+# Depends on: perl perl-lwp-protocol-https perl-try-tiny perl-path-class 
+run=( perl )
+name=perl-crypt-ssleay
+version=0.73_04
+release=2
+
+source=(http://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$version.tar.gz)
+
+build() {
+cd Crypt-SSLeay-$version
+PERL_USE_UNSAFE_INC=1 \
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+
+find $PKG -name '.packlist' -delete
+find $PKG -name '*.pod' -delete
+}

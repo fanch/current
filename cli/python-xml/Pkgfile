@@ -1,0 +1,20 @@
+# Description: library Python XML
+# URL: http://www.gnome.org/
+# Packager: pierre at nutyx dot org
+# Depends on: python2
+run=( python2 )
+
+name=python-xml
+version=0.8.4
+release=3
+
+source=(http://prdownloads.sf.net/pyxml/PyXML-$version.tar.gz)
+
+build() {
+	cd PyXML-$version
+	python2 setup.py build
+	python2 setup.py install --prefix=/usr --root=$PKG
+
+}
+
+  

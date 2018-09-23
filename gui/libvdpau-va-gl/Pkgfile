@@ -1,0 +1,22 @@
+# Depends on: cmake ffmpeg libvdpau libva doxygen graphviz mesa
+
+description="Video Acceleration vdpau for Linux"
+url="https://01.org/linuxmedia/vaapi"
+packager="tnut <tnut@nutyx.org>"
+contributors="Remy"
+run=(mesa)
+
+name=libvdpau-va-gl
+version=0.4.2
+release=1
+
+source=(https://github.com/i-rinat/$name/archive/v$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+mkdir -v build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
+make
+make DESTDIR=$PKG install
+}

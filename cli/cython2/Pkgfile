@@ -1,0 +1,20 @@
+# Description: C extensions for Python.
+# URL: http://www.cython.org/
+# Packager: berlius at nutyx dot com
+# Depends on: python2 python-setuptools 
+
+PKGMK_KEEP_SOURCES="no"
+run=(python2 python-setuptools)
+
+name=cython2
+version=0.28.5
+release=2
+source=(https://files.pythonhosted.org/packages/source/C/Cython/Cython-$version.tar.gz)
+
+build() {
+    cd Cython-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+    for f in cygdb cython cythonize; do
+    mv $PKG/usr/bin/$f $PKG/usr/bin/${f}2
+	done
+}

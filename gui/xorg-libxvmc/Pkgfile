@@ -1,0 +1,22 @@
+# Depends on: xorg-libx11 xorg-libxext xorg-libxv
+
+description="Library X Video Motion Compensation extension client"
+url="http://xorg.freedesktop.org"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B, tnut, Greg"
+
+name=xorg-libxvmc
+alias=(libXvMC)
+version=1.0.10
+release=2
+_name=libXvMC
+
+source=(http://ftp.x.org/pub/individual/lib/${_name}-$version.tar.bz2)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr --disable-static
+make DESTDIR=$PKG install
+rm $PKG/usr/lib/${_name}{,W}.la
+}
+

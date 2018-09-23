@@ -1,0 +1,28 @@
+# Description: Lua module for processing options similar to getopt_long
+# URL: http://luaforge.net/projects/alt-getopt/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: lua bmake
+
+name=lua-alt-getopt
+version=0.7.0
+release=1
+
+source=(http://mova.org/~cheusov/pub/lua_alt_getopt/lua-alt-getopt-$version.tar.gz)
+
+build(){
+    cp -r "${name}-${version}" build51
+	cp -r "${name}-${version}" build52
+	cp -r "${name}-${version}" build53
+    cd $SRC/build51
+	bmake LUAVER=5.1 PREFIX=/usr
+	cd $SRC/build52
+	bmake LUAVER=5.2 PREFIX=/usr
+	cd $SRC/build53
+	bmake LUAVER=5.3 PREFIX=/usr
+	install -Dm755 alt_getopt $PKG/usr/bin/alt_getopt5.1
+	install -Dm664 alt_getopt.lua $PKG/usr/share/lua/5.1/alt_getopt.lua
+    install -Dm755 alt_getopt $PKG/usr/bin/alt_getopt5.2
+    install -Dm664 alt_getopt.lua $PKG/usr/share/lua/5.2/alt_getopt.lua
+    install -Dm755 alt_getopt $PKG/usr/bin/alt_getopt5.3
+    install -Dm664 alt_getopt.lua $PKG/usr/share/lua/5.3/alt_getopt.lua
+}

@@ -1,0 +1,19 @@
+# Description: Perl module that provides SPF support
+# URL: http://search.cpan.org/
+# Packager: pierre at nutyx dot org
+# Depends on: perl-module-build perl-net-dns-resolver-programmable perl-error perl-netaddr-ip perl-uri perl-net-dns perl
+run=( perl )
+
+name=perl-mail-spf
+version=2.9.0
+release=2
+
+source=(http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v$version.tar.gz)
+
+build() {
+cd Mail-SPF-v$version
+sed -i 's|/usr/sbin|/usr/bin|' Build.PL
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+}

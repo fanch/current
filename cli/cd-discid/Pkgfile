@@ -1,0 +1,18 @@
+# Depends on:
+
+description="Backend utility to get cddb information"
+url="http://lly.org/~rcw/cd-discid/"
+packager="greg<greg@nutyx.org>"
+
+name=cd-discid
+version=1.4
+release=2
+
+source=(http://linukz.org/download//${name}-$version.tar.gz)
+
+build () {
+cd $name-$version
+make
+make STRIP=/bin/true DESTDIR=$PKG PREFIX=/usr install
+} 
+        

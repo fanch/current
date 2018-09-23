@@ -1,0 +1,24 @@
+# Description: File System Library for the Lua Programming Language
+# URL: http://www.keplerproject.org/luafilesystem/
+# Packager: alienus at nutyx dot org, tnut at nutyx dot org
+# Depends on: lua lua51 lua52 
+
+name=lua-filesystem
+version=1.7.0.2
+release=1
+
+source=()
+
+build(){
+git clone https://github.com/keplerproject/luafilesystem.git 
+    cd luafilesystem
+  	make LUA_INC=/usr/include/lua5.1
+    make
+    make PREFIX=$PKG/usr LUA_LIBDIR=$PKG/lib/lua/5.1 install
+  	make LUA_INC=/usr/include/lua5.2
+    make
+    make PREFIX=$PKG/usr LUA_LIBDIR=$PKG/lib/lua/5.2 install
+    make LUA_INC=/usr/include/lua5.3
+    make
+    make PREFIX=$PKG/usr LUA_LIBDIR=$PKG/lib/lua/5.3 install
+}

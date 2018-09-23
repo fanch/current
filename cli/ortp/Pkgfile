@@ -1,0 +1,19 @@
+description="A Real-time Transport Protocol (RTP) library"
+url="http://www.linphone.org/index.php/eng/code_review/ortp"
+# Depends on: bctoolbox
+
+name=ortp
+version=1.0.2
+release=3
+
+source=()
+
+build() {
+git clone https://github.com/BelledonneCommunications/ortp.git $name
+  cd ${name}
+  ./autogen.sh
+  ./configure --prefix=/usr \
+    --disable-strict
+  make
+  make DESTDIR=$PKG install
+}

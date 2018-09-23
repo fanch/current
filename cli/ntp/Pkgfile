@@ -1,0 +1,75 @@
+# Description: Client and server to keep the time synchronized between various computers over a network.
+# URL: http://www.ntp.org/ 
+# Packagers: pierre at nutyx dot org, tnut at nutyx dot org
+# Depends on: wget
+run=(wget)
+name=ntp
+version=4.2.8p11
+release=1
+
+source=(https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/$name-4.2/$name-$version.tar.gz)
+
+
+build() {
+source /etc/blfs-bootscripts
+wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
+tar xvf $scripts-$scriptsversion.tar.bz2
+
+cd $name-$version
+sed -e 's/"(\\S+)"/"?([^\\s"]+)"?/' \
+    -i scripts/update-leap/update-leap.in
+./configure CFLAGS="-O2 -g -fPIC" \
+--prefix=/usr \
+--bindir=/usr/sbin \
+--sysconfdir=/etc \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--enable-linuxcaps \
+--with-lineeditlibs=readline \
+--docdir=/usr/share/doc/$name-$version
+
+make
+make DESTDIR=$PKG install
+mkdir -p $PKG/var/lib/ntp
+install -v -o ntp -g ntp -d $PKG/var/lib/ntp
+
+mkdir -p $PKG/etc
+
+cat > $PKG/etc/ntp.conf << "EOF"
+# Asia
+server 0.asia.pool.ntp.org
+
+# Australia
+server 0.oceania.pool.ntp.org
+
+# Europe
+server 0.europe.pool.ntp.org
+
+# North America
+server 0.north-america.pool.ntp.org
+
+# South America
+server 2.south-america.pool.ntp.org
+
+driftfile /var/lib/ntp/ntp.drift
+pidfile   /var/run/ntpd.pid
+
+leapfile  /etc/ntp.leapseconds
+EOF
+
+cat >> $PKG/etc/ntp.conf << "EOF"
+# Security session
+restrict    default limited kod nomodify notrap nopeer noquery
+restrict -6 default limited kod nomodify notrap nopeer noquery
+
+restrict 127.0.0.1
+restrict ::1
+EOF
+
+# service
+cd ../$scripts-$scriptsversion
+make DESTDIR=$PKG install-ntpd
+
+ln -v -sf ../init.d/setclock $PKG/etc/rc.d/rc0.d/K46setclock &&
+ln -v -sf ../init.d/setclock $PKG/etc/rc.d/rc6.d/K46setclock
+}

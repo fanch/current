@@ -1,0 +1,19 @@
+# Depends on: boost
+
+description="Cross-platform C++ library for ASynchronous network I/O"
+url="http://asio.sourceforge.net"
+packager="tnut <tnut@nutyx.org>"
+contributors="Greg"
+
+name=asio
+version=1.12.0
+release=1
+source=(https://github.com/chriskohlhoff/asio/archive/asio-${version//./-}.tar.gz)
+
+build() {
+  cd ${name}-${name}-${version//./-}/asio
+  autoreconf -fiv
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}    

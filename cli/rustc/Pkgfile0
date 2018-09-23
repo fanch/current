@@ -1,0 +1,58 @@
+# Depends on: meson ninja cmake curl llvm python2
+
+description="The Rust programming language is designed to be a safe, concurrent, practical language."
+url="http://static.rust-lang.org/"
+packager="pierre <pierre@nutyx.org>"
+contributors="Pierre B, tnut"
+
+name=rustc
+version=1.28.0
+release=1
+source=(http://static.rust-lang.org/dist/$name-$version-src.tar.gz)
+
+build() {
+cd $name-$version-src
+
+cat <<EOF > config.toml
+[llvm]
+ninja = true
+
+[build]
+cargo = "/usr/bin/cargo"
+rustc = "/usr/bin/rustc"
+python = "python2.7"
+extended = true
+sanitizers = false
+
+[install]
+prefix = "/usr"
+
+[rust]
+# 0 or the new default of 16 is faster, but can result in worse performance
+# https://github.com/rust-lang/rust/issues/47745
+codegen-units = 1
+
+debuginfo = true
+debuginfo-lines = true
+
+channel = "stable"
+
+rpath = false
+
+# Work around https://github.com/rust-lang/rust/issues/51650
+deny-warnings = false
+EOF
+
+python2 ./x.py build
+DESTDIR=$PKG python2 ./x.py install
+  
+cd $PKG/usr/lib
+
+rm rustlib/{components,manifest-rustc,rust-installer-version}
+ln -sf rustlib/$(uname -m)-unknown-linux-gnu/lib/*.so .
+
+mv $PKG/usr/share/doc $SRC/
+
+install -d $PKG/usr/share/bash-completion
+mv $PKG/etc/bash_completion.d/ $PKG/usr/share/bash-completion/completions/
+}

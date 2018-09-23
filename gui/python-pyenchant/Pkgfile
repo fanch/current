@@ -1,0 +1,23 @@
+# Depends on: python-setuptools enchant 
+
+description=""
+url="https://pypi.python.org/pypi/pyenchant"
+packager="greg<greg@nutyx.org"
+
+name=python-pyenchant
+version=2.0.0
+release=1
+
+run=(python-setuptools python2 python)
+
+source=(https://github.com/rfk/pyenchant/archive/v${version}.tar.gz
+		enchant-2.patch)
+
+build() {
+	cd pyenchant-$version
+	patch -Np1 -i $SRC/enchant-2.patch
+	python2 setup.py build 
+	python2 setup.py install --root=$PKG --optimize=1
+	python3 setup.py build 
+	python3 setup.py install --root=$PKG --optimize=1
+}	

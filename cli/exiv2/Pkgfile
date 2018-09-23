@@ -1,0 +1,24 @@
+# Description: Exif and Iptc metadata manipulation library and tools
+# URL: http://www.exiv2.org/index.html
+# Packager: pierre at nutyx dot org
+# Depends on: expat 
+
+name=exiv2
+version=0.26
+release=1
+
+source=(http://www.exiv2.org/builds/$name-$version-trunk.tar.gz)
+
+build() {
+cd $name-trunk
+./configure --prefix=/usr \
+	--enable-video \
+	--enable-webready \
+	--without-ssh \
+	--disable-static 
+make
+make DESTDIR=$PKG install
+chmod -v 755 $PKG/usr/lib/libexiv2.so
+}
+
+  

@@ -1,0 +1,21 @@
+# Depends on: libtiff cairo giflib glib libexif
+
+description="An Open Source Implementation of the GDI+ API"
+url="http://www.mono-project.com"
+packager="greg<greg@nutyx.org>"
+contributors=""
+
+name=libgdiplus
+version=5.6
+release=1
+
+source=(http://download.mono-project.com/sources/${name}/${name}-${version}.tar.gz)
+
+build() {
+git clone https://github.com/mono/libgdiplus.git $name
+  cd ${name}
+  autoreconf -fiv
+  ./configure --prefix=/usr --with-cairo=system
+  make
+  make DESTDIR=$PKG install
+}

@@ -1,0 +1,20 @@
+# Description: USB Device Utilities
+# URL: http://downloads.sourceforge.net/linux-usb/
+# Packager: pierre at nutyx dot org
+# Depends on: libusb-compat 
+run=( wget )
+
+name=usbutils
+version=010
+release=1
+
+source=(http://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr --datadir=/usr/share/hwdata
+make
+make DESTDIR=$PKG install
+install -dm755 $PKG/usr/share/hwdata/ &&
+wget http://www.linux-usb.org/usb.ids -O $PKG/usr/share/hwdata/usb.ids
+}

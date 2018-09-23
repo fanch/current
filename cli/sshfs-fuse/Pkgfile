@@ -1,0 +1,22 @@
+# Description: FUSE client based on the SSH File Transfer Protocol
+# URL: http://fuse.sourceforge.net/sshfs.html
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: fuse glib openssh meson ninja
+
+name=sshfs-fuse
+version=3.5.0
+release=1
+
+source=(https://github.com/libfuse/sshfs/releases/download/sshfs-$version/sshfs-$version.tar.xz
+        sshfs.1)
+
+build() {
+    cd sshfs-$version
+    meson build --prefix /usr
+    DESTDIR=$PKG ninja -C build -j1 install
+    install -D -m 0644 $SRC/sshfs.1 $PKG/usr/share/man/man1/sshfs.1
+}
+
+
+
