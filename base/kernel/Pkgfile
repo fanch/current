@@ -1,8 +1,7 @@
+# Description: The latest stable kernel version.
+# URL :http://www.kernel.org
+# Packager: tnut <tnut@nutyx.org>"
 # Depends on: nutyx
-
-url="http://www.kernel.org"
-description="The latest stable kernel version"
-packager="tnut <tnut@nutyx.org>"
 
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"

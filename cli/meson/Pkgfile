@@ -7,7 +7,7 @@ packager="tnut <tnut@nutyx.org>"
 
 name=meson
 version=0.47.2
-release=1
+release=2
 source=(https://github.com/mesonbuild/$name/releases/download/$version/$name-$version.tar.gz
 		MESON)
 

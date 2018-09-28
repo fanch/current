@@ -1,12 +1,11 @@
-description="Keyutils is a set of utilities for managing the key retention facility in the kernel."
-url=" https://rhn.redhat.com/errata/RHEA-2006-0090.html"
-packager="tnut <tnut@nutryx.org>"
-contributors="Pierre B"
+# Description: Keyutils is a set of utilities for managing the key retention facility in the kernel.
+# URL: https://rhn.redhat.com/errata/RHEA-2006-0090.html
+# Packager: tnut <tnut@nutryx.org>
+# Contributors: Pierre B
 
 name=keyutils
 version=1.5.10
 release=1
-
 source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
 
 build() {

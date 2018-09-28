@@ -1,16 +1,15 @@
-description="Libraries for terminal-independent handling of character screens."
-url="http://www.gnu.org/software/ncurses/ncurses.html"
-maintainer="Thomas E. Dickey TD,Juergen Pfeifer JPF,Eric S Raymond ESR,Alexander V Lukyanov,Philippe Blain PB,Sven Verdoolaege SV"
-packager="tnut <tnut@nutyx.org>"
+# Description: Libraries for terminal-independent handling of character screens.
+# URL: http://www.gnu.org/software/ncurses/ncurses.html
+# Maintainer="Thomas E. Dickey TD,Juergen Pfeifer JPF,Eric S Raymond ESR,Alexander V Lukyanov,Philippe Blain PB,Sven Verdoolaege SV
+# Packager="tnut <tnut@nutyx.org>
 
 name=ncurses
 version=6.1
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
-build()
-{
-cd ncurses-$version
 
+build() {
+cd ncurses-$version
 sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 
 ./configure --prefix=/usr --mandir=/usr/share/man \
@@ -20,11 +19,9 @@ sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 --enable-widec --with-install-prefix=$PKG
 
 make
-
 make install
 
 mkdir -p $PKG/lib
-
 for lib in ncurses form panel menu ; do \
         rm -vf $PKG/lib/lib${lib}.so ; \
         echo "INPUT(-l${lib}w)" >$PKG/lib/lib${lib}.so ; \

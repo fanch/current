@@ -1,6 +1,7 @@
-description="The Bc package contains an arbitrary precision numeric processing language."
-url="http://ftp.gnu.org/gnu/bc/"
-packager="tnut <tnut@nutyx.org>"
+# Description: The Bc package contains an arbitrary precision numeric processing language.
+# URL: http://ftp.gnu.org/gnu/bc/
+# Packager: tnut <tnut@nutyx.org>
+
 name=bc
 version=1.07.1
 release=1

@@ -1,10 +1,8 @@
+# Description: Btrfs filesystem utilities.
+# URL: http://btrfs.wiki.kernel.org/
+# Contributors: alienus at nutyx dot org, tnut at nutyx dot org
+# Packager: tnut <tnut@tnut@nutyx.org>
 # Depends on: lzo
-
-description="Btrfs filesystem utilities"
-url="http://btrfs.wiki.kernel.org/"
-
-contributors="alienus at nutyx dot org, tnut at nutyx dot org"
-packager="tnut <tnut@tnut@nutyx.org>"
 
 name=btrfs-progs
 version=4.17
@@ -13,6 +11,7 @@ source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$versi
 
 build(){
 cd $name-v$version
+
 sed -i '1,100 s/\.gz//g' Documentation/Makefile.in
 ./configure \
 --prefix=/usr \

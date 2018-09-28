@@ -1,10 +1,11 @@
-[ "$PKGMK_ARCH" == "x86_64" ] && PKGMK_GROUPS=(devel man)
+# Description: To create nice user interfaces to shell scripts or other scripting languages.
+# URL: http://hightek.org/dialog/
+# Packager: tnut <tnut@nutyx.org>
+# Maintainer: Thomas E. Dickey dickey at invisible-island dot net
 
-packager="tnut <tnut@nutyx.org>"
-maintainer="Thomas E. Dickey dickey at invisible-island dot net"
-url="http://hightek.org/dialog/"
-description="To create nice user interfaces to shell scripts or other scripting languages."
+[ "$PKGMK_ARCH" == "x86_64" ] && PKGMK_GROUPS=(devel man)
 PKGMK_GROUPS=(devel man)
+
 name=dialog
 version=1.3-20160828
 release=1

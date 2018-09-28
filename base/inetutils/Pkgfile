@@ -1,17 +1,15 @@
-description="The Inetutils package contains programs for basic networking."
-url="http://www.gnu.org/software/inetutils/"
-maintainer="Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more"
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre B"
+# Description: The Inetutils package contains programs for basic networking.
+# URL: http://www.gnu.org/software/inetutils/
+# Maintainer: Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more
+# Packager: tnut <tnut@nutyx.org>
+# Contributors: Pierre B
 
 name=inetutils
 version=1.9.4
 release=2
-
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.xz)
 
-build()
-{
+build() {
 cd  inetutils-$version
 
 ./configure --prefix=/usr \

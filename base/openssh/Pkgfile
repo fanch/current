@@ -1,27 +1,26 @@
-description="Free version of the SSH connectivity tools"
-url="http://www.openssh.org/"
-
-contributors="Pierre B"
-packager="tnut <tnut@nutyx.org>"
+# Description: Free version of the SSH connectivity tools
+# URL: http://www.openssh.org/
+# Contributors: Pierre B
+# Packager: tnut <tnut@nutyx.org>
 
 name=openssh
 version=7.8p1
 release=1
 source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
-	http://www.linuxfromscratch.org/patches/blfs/svn/openssh-$version-openssl-1.1.0-1.patch)
+	openssh-$version-openssl-1.1.0-1.patch)
 
 build() {
-
 unset MAKEFLAGS
 cd $name-$version
+
 source /etc/blfs-bootscripts
 	wget  http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 	tar xvf $scripts-$scriptsversion.tar.bz2
+
 install -v -m700 -d $PKG/var/lib/sshd
-
 chown -v root:sys $PKG/var/lib/sshd
-
 patch -Np1 -i ../openssh-$version-openssl-1.1.0-1.patch
+
 ./configure --prefix=/usr                     \
             --sysconfdir=/etc/ssh             \
             --datadir=/usr/share/sshd 		  \

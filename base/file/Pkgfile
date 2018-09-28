@@ -1,7 +1,7 @@
-description="Utility for determining the type of a given file or files."
-url="ftp://ftp.fu-berlin.de/unix/tools/file/"
-maintainer="Christos Zoulas"
-packager="tnut <tnut@nutyx.org>"
+# Description: Utility for determining the type of a given file or files.
+# URL: ftp://ftp.fu-berlin.de/unix/tools/file/
+# Maintainer: Christos Zoulas
+# Packager: tnut <tnut@nutyx.org>
 
 name=file
 version=5.34
@@ -15,8 +15,7 @@ make
 make check
 make DESTDIR=$PKG install
 }
-devel()
-{
+devel() {
 cd $PKG
 bsdtar -cf \
 $PKGMK_PACKAGE_DIR/${name}.devel${PKGMK_BUILDVER}any.$PKGMK_PACKAGE_EXT \

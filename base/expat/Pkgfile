@@ -1,7 +1,9 @@
-description="The Expat package contains a stream oriented C library for parsing XML."
-url="http://expat.sourceforge.net/"
-packager="tnut <tnut@nutyx.org>"
+# Description: The Expat package contains a stream oriented C library for parsing XML.
+# URL: http://expat.sourceforge.net/
+# Packager: tnut <tnut@nutyx.org>
+
 PKGMK_GROUPS=(devel doc man)
+
 name=expat
 version=2.2.5
 release=1
@@ -9,7 +11,6 @@ source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
-
 sed -i 's|usr/bin/env |bin/|' run.sh.in
 
 ./configure --prefix=/usr

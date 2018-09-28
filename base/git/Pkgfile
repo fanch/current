@@ -1,17 +1,16 @@
+# Description: Distributed version control system designed to handle small to very large projects.
+# URL: http://git-scm.com/
+# Maintainer: Junio C Hamano, Linus Torvalds
+# Packager: tnut <tnut@nutyx.org>
+# Contributors: Pierre B
 # Depends on: openssh
-
-maintainer="Junio C Hamano, Linus Torvalds"
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre B"
-
-description="Distributed version control system designed to handle small to very large projects."
-url="http://git-scm.com/"
+run=(openssh)
 
 name=git
 version=2.18.0
 release=1
 source=( https://www.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
-run=(openssh)
+
 
 build() {
 cd $name-$version
@@ -20,7 +19,6 @@ cd $name-$version
 --libexecdir=/usr/lib \
 --with-gitconfig=/etc/gitconfig \
 --without-python
-
 make
 make DESTDIR=$PKG install
 
@@ -32,13 +30,9 @@ do
 	cp -a $i \
 	$PKG/usr/share/doc/git-$version
 done
-
-mv man* \
-$PKG/usr/share/man
-
+mv man* $PKG/usr/share/man
 chown -R root:root $PKG/usr/share/{man,doc}
 
 find $PKG/usr/share/doc/git-$version -type d -exec chmod 755 {} \;
 find $PKG/usr/share/doc/git-$version -type f -exec chmod 644 {} \;
-
 }

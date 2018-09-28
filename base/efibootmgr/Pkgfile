@@ -1,7 +1,7 @@
+# Description:Tool to modify UEFI Firmware Boot Manager Variables
+# URL: https://github.com/rhinstaller/efibootmgr
+# Packager: tnut <tnut@nutyx.org>
 # Depends on: efivar pciutils dosfstools
-description="Tool to modify UEFI Firmware Boot Manager Variables"
-url="https://github.com/rhinstaller/efibootmgr"
-packager="tnut <tnut@nutyx.org>"
 
 name=efibootmgr
 version=16
@@ -12,6 +12,7 @@ source=($url/releases/download/$version/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version
+
 make EXTRA_CFLAGS="-Os" EFIDIR="/boot/EFI"
 install -d ${PKG}/usr/bin
 install -D -m0755 src/efibootmgr ${PKG}/usr/bin/efibootmgr

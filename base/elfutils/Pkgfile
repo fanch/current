@@ -1,15 +1,15 @@
-description="Set of utilities and libraries for handling elf files."
-url="http://xiph.org/ao/"
-packager="tnut <tnut@nutyx.org>"
+# Description: Set of utilities and libraries for handling elf files.
+# URL: http://xiph.org/ao/
+# Packager: tnut <tnut@nutyx.org>
 
 name=elfutils
-version=0.173
+version=0.174
 release=1
-
-source=( https://sourceware.org/elfutils/ftp/$version/elfutils-$version.tar.bz2 )
+source=(https://sourceware.org/elfutils/ftp/$version/elfutils-$version.tar.bz2)
 
 build() {
 cd $name-$version
+
 ./configure --prefix=/usr \
 --program-prefix="eu-"
 make

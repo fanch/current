@@ -1,15 +1,13 @@
+# Description: The linux kernel firmware set of files. More and more hardware requires this package.
+# Packager: tnut <tnut@nutyx.org>
 # Depends on: git
-
-description="The linux kernel firmware set of files. More and more hardware requires this package"
-packager="tnut <tnut@nutyx.org>"
 
 name=linux-firmware
 version=20171022
 release=1
 
 build() {
-git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git \
-firmware
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git firmware
 find firmware -name '*.c' \
 -or -name '*.h' \
 -or -name '*.asm' \
@@ -26,7 +24,5 @@ rm -rf firmware/usbdux
 rm -rf firmware/carl9170fw
 rm -rf firmware/.git
 mkdir $PKG/lib
-cp -a firmware \
-$PKG/lib
-
+cp -a firmware $PKG/lib
 }

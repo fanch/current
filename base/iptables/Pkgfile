@@ -1,12 +1,11 @@
-description="The principal firewall tool for Linux."
-url="http://www.iptables.org/"
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre B"
+# Description: The principal firewall tool for Linux.
+# URL: http://www.iptables.org/
+# Packager: tnut <tnut@nutyx.org>
+# Contributors: Pierre B
 
 name=iptables
 version=1.8.0
 release=1
-
 source=(http://www.netfilter.org/projects/iptables/files/$name-$version.tar.bz2)
 
 build() {
@@ -31,6 +30,7 @@ do
    mv -v $PKG/usr/lib/lib${file}.so.* $PKG/lib
    ln -sfv ../../lib/$(readlink $PKG/usr/lib/lib${file}.so) $PKG/usr/lib/lib${file}.so
 done
+
 # service
 tar xf $SRC/$scripts-$scriptsversion.tar.bz2
 cd $scripts-$scriptsversion

@@ -1,17 +1,17 @@
-description="A set of utilities to manage software packages on NuTyX distribution."
-url="https://github.com/NuTyX/cards"
-maintainer="tnut at nutyx dot org"
-packager="tnut at nutyx dot org"
+# Description: A set of utilities to manage software packages on NuTyX distribution.
+# URL: https://github.com/NuTyX/cards
+# Maintainer: tnut at nutyx dot org
+# Packager: tnut at nutyx dot org
 
 alias=(card)
-
 PKGMK_IGNORE_RUNTIMEDEPS="no"
 PKGMK_GROUPS=(devel doc man)
+
 name=cards
 version=2.2.2
 release=1
-
 source=(http://downloads.nutyx.org/files/cards-$version.tar.gz)
+
 build () {
 cd $name-$version
 
@@ -19,8 +19,7 @@ make all
 make DESTDIR=$PKG install
 mkdir -p $PKG/{etc,usr}/ports
 }
-devel()
-{
+devel() {
 cd $PKG
 bsdtar -cf \
 $PKGMK_PACKAGE_DIR/$name.${group}${PKGMK_BUILDVER}${PKGMK_ARCH}.$PKGMK_PACKAGE_EXT \

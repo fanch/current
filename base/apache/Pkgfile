@@ -6,16 +6,14 @@
 name=apache
 version=2.4.34
 release=1
-
 source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
 	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)
-build(){
 
+build(){
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 
 cd httpd-$version
-
 patch -Np1 -i ../httpd-$version-blfs_layout-1.patch
 sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in
 ./configure --enable-authnz-fcgi                            \
@@ -40,6 +38,7 @@ chmod 4754 $PKG/usr/lib/httpd/suexec
 
 chown -v -R apache:apache $PKG/srv/www
 rm -f $PKG/srv/www/htdocs/index.html
+
 cd $SRC
 tar xf $scripts-$scriptsversion.tar.bz2
 cd $SRC/$scripts-$scriptsversion

@@ -1,8 +1,7 @@
+# Description: A collection of freely re-usable Autoconf macros.
+# URL: http://www.gnu.org/software/autoconf-archive/
+# Packager: tnut <tnut@nutyx.org>
 # Depends on: autoconf
-
-description="A collection of freely re-usable Autoconf macros"
-url="http://www.gnu.org/software/autoconf-archive/"
-packager="tnut <tnut@nutyx.org>"
 
 name=autoconf-archive
 version=2018.03.13

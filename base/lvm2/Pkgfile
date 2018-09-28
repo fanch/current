@@ -1,14 +1,16 @@
-description="Allows spanning of file systems across multiple physical disks and partitions."
-url="http://sourceware.org/lvm2/"
-contributors="Pierre B"
-packager="tnut <tnut@nutyx.org>"
+# Description: Allows spanning of file systems across multiple physical disks and partitions.
+# URL: http://sourceware.org/lvm2/
+# Contributors: Pierre B
+# Packager: tnut <tnut@nutyx.org>
 
 name=lvm2
 version=2.02.177
 release=1
 source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
+
 build() {
 cd LVM2.$version
+
 ./configure \
 --prefix=/usr \
 --exec-prefix= \

@@ -1,20 +1,20 @@
+# Description:The GRUB package contains the GRand Unified Bootloader, EFI version
+# URL: http://www.gnu.org/software/grub/
+# Packager: tnut <tnut@nutyx.org>
 # Depends on: efibootmgr efivar freetype
-description="The GRUB package contains the GRand Unified Bootloader, EFI version"
-url="http://www.gnu.org/software/grub/"
-packager="tnut <tnut@nutyx.org>"
+run=(efivar)
+
+PKGMK_GROUPS=(man locale)
 
 name=grub-efi
 version=2.02
 release=1
-run=(efivar)
-
 source=(unicode.pf2
-		http://ftp.gnu.org/gnu/grub/grub-$version.tar.xz)
-
-PKGMK_GROUPS=(man locale)
+	http://ftp.gnu.org/gnu/grub/grub-$version.tar.xz)
 
 build() {
  cd grub-$version
+
  ./configure --prefix=/usr --sysconfdir=/etc \
  --sbindir=/sbin \
  --disable-efiemu --enable-grub-mkfont \
@@ -24,7 +24,6 @@ build() {
  --with-grubdir="grub-efi"  --disable-werror
 
  make
-
  make DESTDIR=$PKG install
 
  mv $PKG/etc/bash_completion.d/grub{,-efi}

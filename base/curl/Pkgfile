@@ -1,18 +1,18 @@
-description="Utility for transferring files with URL syntax to many protocols"
-url="http://curl.haxx.se"
-maintainer="Daniel Stenberg"
-packager="tnut <tnut@nutyx.org>"
+# Description: Utility for transferring files with URL syntax to many protocols.
+# URL: http://curl.haxx.se
+# Maintainer: Daniel Stenberg
+# Packager: tnut <tnut@nutyx.org>
 
+PKGMK_GROUPS=(devel doc man)
 
 name=curl
 version=7.60.0
 release=1
 source=(http://curl.haxx.se/download/$name-$version.tar.xz)
 
-PKGMK_GROUPS=(devel doc man)
-
 build() {
 cd $name-$version
+
 ./configure --prefix=/usr \
 --bindir=/bin  \
 --with-ca-path=/etc/ssl/certs \
@@ -34,14 +34,10 @@ mkdir $PKG/lib
 mv $PKG/usr/lib/libcurl.so.4.5.0 \
 $PKG/lib/
 for LIB in libcurl.so{,.4}
-	do 
-		ln -sv libcurl.so.4.5.0 $PKG/lib/$LIB
-		rm $PKG/usr/lib/$LIB
-		ln -sv ../../lib/libcurl.so.4.5.0 \
-		$PKG/usr/lib/$LIB
+do 
+ln -sv libcurl.so.4.5.0 $PKG/lib/$LIB
+rm $PKG/usr/lib/$LIB
+ln -sv ../../lib/libcurl.so.4.5.0 $PKG/usr/lib/$LIB
 done
-
-ln -sv ../../lib/libcurl.so.4.5.0 \
-$PKG/usr/lib/libcurl.so.4.5.0
-
+ln -sv ../../lib/libcurl.so.4.5.0 $PKG/usr/lib/libcurl.so.4.5.0
 }

@@ -1,7 +1,7 @@
-description="GNU utilities to locate files"
-url="http://www.gnu.org/software/findutils/"
-maintainer="Eric B. Decker,Michael Rendell,James A. Woods"
-packager="tnut <tnut@nutyx.org>"
+# Description: GNU utilities to locate files.
+# URL: http://www.gnu.org/software/findutils/
+# Maintainer: Eric B. Decker,Michael Rendell,James A. Woods
+# Packager: tnut <tnut@nutyx.org>
 
 name=findutils
 version=4.6.0
@@ -9,9 +9,9 @@ release=3
 
 source=(http://ftp.gnu.org/gnu/findutils/findutils-$version.tar.gz)
 
-build()
-{
+build() {
 cd findutils-$version
+
 sed -i 's/test-lock..EXEEXT.//' tests/Makefile.in
 sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' gl/lib/*.c
 sed -i '/unistd/a #include <sys/sysmacros.h>' gl/lib/mountlist.c

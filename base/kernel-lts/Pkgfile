@@ -1,9 +1,8 @@
-# Depends on: nutyx
-
-url="http://www.kernel.org"
-description="The long term stable kernel version with virtualbox modules"
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre B"
+# Description: The long term stable kernel version with virtualbox modules.
+# URL: http://www.kernel.org
+# Packager: tnut <tnut@nutyx.org>
+# Contributors: Pierre B
+# Depends on: nutyx 
 
 PKGMK_IGNORE_UNPACK="yes"
 PKGMK_NO_STRIP="yes"

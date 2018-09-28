@@ -1,6 +1,6 @@
-description="Libraries used by other programs for reading and writing PNG files."
-url="http://www.libpng.org/pub/png/libpng.html"
-packager="tnut <tnut@nutyx.org>"
+# Description : Libraries used by other programs for reading and writing PNG files.
+# URL: http://www.libpng.org/pub/png/libpng.html
+# Packager : tnut <tnut@nutyx.org>
 
 name=libpng
 version=1.6.35
@@ -11,6 +11,7 @@ source=(http://downloads.sourceforge.net/$name/$name-$version.tar.xz
 build() {
 cd $name-$version
 gzip -cd ../$name-$version-apng.patch.gz | patch -p1
+
 LIBS=-lpthread \
 ./configure --prefix=/usr \
 --mandir=/usr/share/man \

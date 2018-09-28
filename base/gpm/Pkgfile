@@ -1,7 +1,9 @@
-description="General Purpose Mouse: mouse server for the console and xterm."
-url="http://unix.schottelius.org/gpm"
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre B"
+# Description: General Purpose Mouse: mouse server for the console and xterm.
+# URL: http://unix.schottelius.org/gpm
+# Maintainer:
+# Packager: tnut <tnut@nutyx.org>
+# Contributors: Pierre B
+
 name=gpm
 version=1.20.7
 release=4

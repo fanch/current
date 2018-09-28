@@ -1,8 +1,8 @@
-description="80x86 assembler designed for portability and modularity."
-url="http://nasm.sourceforge.net/"
-maintainer="H. Peter Anvin,Frank B. Kotler,Jin Kyu Song,Cyrill Gorcunov"
-contributors="Pierre B"
-packager="tnut <tnut@nutyx.org>"
+# Description: 80x86 assembler designed for portability and modularity.
+# URL: http://nasm.sourceforge.net/
+# Maintainer: H. Peter Anvin,Frank B. Kotler,Jin Kyu Song,Cyrill Gorcunov
+# Contributors="Pierre B
+# Packager="tnut <tnut@nutyx.org>
 
 name=nasm
 version=2.13.03
@@ -12,9 +12,10 @@ source=( http://www.nasm.us/pub/nasm/releasebuilds/$version/$name-$version.tar.x
 
 build() {
 	cd $name-$version
-	sed -e '/seg_init/d'                      \
+	sed -e '/seg_init/d'              \
     -e 's/pure_func seg_alloc/seg_alloc/' \
     -i include/nasmlib.h
+
 	./configure --prefix=/usr\
 		    --mandir=/usr/share/man
 	make

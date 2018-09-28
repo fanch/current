@@ -1,9 +1,9 @@
-PKGMK_GROUPS=(devel doc man)
+# Description: Library that can create and read several streaming archive formats.
+# URL: http://people.freebsd.org/~kientzle/libarchive
+# Maintainer: kientzle at acm dot org
+# Packager: tnut tnut@nutyx.org
 
-description="Library that can create and read several streaming archive formats."
-url="http://people.freebsd.org/~kientzle/libarchive"
-maintainer="kientzle at acm dot org"
-packager="tnut <tnut@nutyx.org>"
+PKGMK_GROUPS=(devel doc man)
 
 name=libarchive
 version=3.3.2
@@ -18,7 +18,6 @@ cd $name-$version
 --infodir=/usr/share/info
 make
 make DESTDIR=$PKG install
-
 }
 devel() {
 cd $PKG

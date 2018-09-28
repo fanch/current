@@ -1,19 +1,19 @@
+# Description: Cross-platform IDE focused on Python application development.
+# URL: http://martine.github.io/ninja/
+# Contributors: Pierre, Greg
+# Packager="tnut <tnut@nutyx.org>"
 # Depends on: python
-
-description="Cross-platform IDE focused on Python application development"
-url="http://martine.github.io/ninja/"
-contributors="Pierre, Greg"
-packager="tnut <tnut@nutyx.org>"
-
 
 name=ninja
 version=1.8.2
-release=3
-
-source=(https://github.com/ninja-build/$name/archive/v$version/$name-$version.tar.gz)
+release=4
+source=(https://github.com/ninja-build/$name/archive/v$version/$name-$version.tar.gz
+	ninja-1.8.2-add_NINJAJOBS_var-1.patch)
 	
 build() {
 	cd $name-$version
+	patch -Np1 ../ninja-1.8.2-add_NINJAJOBS_var-1.patch
+
 	python3 configure.py --bootstrap
 	install -vm755 -D ninja $PKG/usr/bin/ninja
 	install -vDm644 misc/ninja.vim $PKG/usr/share/vim/vim80/syntax/ninja.vim 

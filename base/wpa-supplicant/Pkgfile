@@ -1,20 +1,18 @@
+# Description: A utility providing key negotiation for WPA wireless networks.
+# URL: http://hostap.epitest.fi/wpa_supplicant
+# Packager: tnut tnut@nutyx.org>
+# Contributors: Pierre B, tnut, greg
 # Depends on: libnl
-
-description="A utility providing key negotiation for WPA wireless networks"
-url="http://hostap.epitest.fi/wpa_supplicant"
-packager="tnut tnut@nutyx.org>"
-contributors="Pierre B, tnut, greg"
 
 name=wpa-supplicant
 version=2.6
 release=3
-
-source=( http://www.linuxfromscratch.org/patches/blfs/svn/wpa_supplicant-$version-upstream_fixes-1.patch
+source=(wpa_supplicant-$version-upstream_fixes-1.patch
 	http://hostap.epitest.fi/releases/wpa_supplicant-$version.tar.gz)
 
 build() {
-
 cd wpa_supplicant-$version
+
 cat > wpa_supplicant/.config << "EOF"
 CONFIG_BACKEND=file
 CONFIG_CTRL_IFACE=y
@@ -43,7 +41,8 @@ CONFIG_WPS=y
 CFLAGS += -I/usr/include/libnl3
 EOF
 patch -p1 -i ../wpa_supplicant-$version-upstream_fixes-1.patch
-cd wpa_supplicant &&
+
+cd wpa_supplicant 
 make BINDIR=/sbin LIBDIR=/lib
 mkdir -p $PKG/{etc,sbin,usr/share/man/man{5,8}}
 install -v -m755 wpa_{cli,passphrase,supplicant} $PKG/sbin

@@ -1,7 +1,7 @@
-description="Programs for compressing and decompressing files."
-url="http://www.bzip.org/"
-maintainer="Julian Seward ( jseward at bzip dot org )"
-packager="tnut <tnut@nutyx.org>"
+# Description: Programs for compressing and decompressing files.
+# URL: http://www.bzip.org/
+# Maintainer: Julian Seward ( jseward at bzip dot org )
+# Packager: tnut <tnut@nutyx.org>
 
 name=bzip2
 version=1.0.6

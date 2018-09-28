@@ -1,7 +1,7 @@
-description="C library for manipulating pipelines of subprocesses in a flexible way"
-url="http://libpipeline.nongnu.org/"
-maintainer="Colin Watson cjwatson at debian dot org"
-packager="tnut <tnut@nutyx.org>"
+# Description: C library for manipulating pipelines of subprocesses in a flexible way.
+# URL: http://libpipeline.nongnu.org/
+# Maintainer: Colin Watson cjwatson at debian dot org
+# Packager: tnut <tnut@nutyx.org>
 
 name=libpipeline
 version=1.5.0
@@ -10,9 +10,9 @@ source=(http://download.savannah.gnu.org/releases/libpipeline/libpipeline-$versi
 
 PKGMK_GROUPS=(devel man)
 
-build()
-{
+build() {
 cd $name-$version
+
 PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 ./configure --prefix=/usr 
 make

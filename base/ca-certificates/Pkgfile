@@ -1,17 +1,15 @@
-description="Certificate Authority certificates, the Public Key Infrastructure."
-url="http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1"
-packager="tnut <tnut@nutyx.org>"
+# Description: Certificate Authority certificates, the Public Key Infrastructure.
+# URL: http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
+# Packager: tnut <tnut@nutyx.org>
 
 name=ca-certificates
 version=0.8
 release=1
-
 source=(https://github.com/djlucas/make-ca/archive/v0.8/make-ca-$version.tar.gz
 	https://hg.mozilla.org/mozilla-central/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 	http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt)
 
 build() {
-
 install -vdm755 $PKG/{usr/sbin,etc/ssl/local}
 
 OPENSSL="`which openssl`"
