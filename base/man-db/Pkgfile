@@ -2,7 +2,7 @@
 # URL: http://savannah.nongnu.org/projects/man-db
 # Maintainer: Colin Watson cjwatson at debian dot org
 # Contributors: Pierre B
-Packager: tnut <tnut@nutyx.org>
+# Packager: tnut <tnut@nutyx.org>
 
 name=man-db
 version=2.8.4

@@ -9,7 +9,7 @@ packager="tnut <tnut@nutyx.org>"
 
 name=python
 version=3.7.0
-release=3
+release=2
 
 alias=(python3 Python)
 source=(
@@ -70,5 +70,4 @@ usr/share/applications/$name.desktop \
 usr/share/icons/hicolor/16x16/apps/$name.png
 
 rm -r usr/share/{doc,applications/$name.desktop,icons/hicolor/16x16/apps/$name.png}
-
 }

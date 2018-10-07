@@ -1,4 +1,4 @@
-# Depends on: gcc doxygen graphviz python python2 meson
+# Depends on: gcc doxygen graphviz python python2 meson 
 
 description="C++ library for interacting with JSON"
 url="https://github.com/open-source-parsers/jsoncpp"
@@ -27,6 +27,10 @@ ninja -C build test
   cd test
   python2 runjsontests.py ../build/jsontestrunner
   python2 rununittests.py ../build/jsoncpp_test  
+}
+package() {
+
+cd jsoncpp-$version
 
 DESTDIR=$PKG ninja -C build install
 install -Dm 644 README.md -t $PKG/usr/share/doc/$name

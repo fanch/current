@@ -8,7 +8,7 @@ contributors="Pierre B, tnut"
 
 name=xorg-libdrm
 _name=libdrm
-version=2.4.93
+version=2.4.95
 release=1
 alias=(libdrm)
 
@@ -16,6 +16,9 @@ source=(http://dri.freedesktop.org/${_name}/${_name}-$version.tar.bz2)
 
 build() {
 cd ${_name}-$version
-./configure --prefix=/usr --disable-static
-make DESTDIR=$PKG install
+mkdir build 
+cd build 
+meson --prefix=/usr -Dudev=true
+ninja 
+DESTDIR=$PKG ninja install
 }

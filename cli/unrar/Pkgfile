@@ -3,9 +3,8 @@
 # Packager: tnut at nutyx dot org
 
 name=unrar
-version=5.6.4
+version=5.6.7
 release=1
-
 source=(http://www.rarlab.com/rar/unrarsrc-$version.tar.gz)
 
 build() {

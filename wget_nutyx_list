@@ -118,7 +118,7 @@ http://www.thrysoee.dk/editline/libedit-20170329-3.1.tar.gz
 https://github.com/thom311/libnl/releases/download/libnl$(echo 3.4.0|sed 's/\./_/g')/libnl-3.4.0.tar.gz
 http://downloads.sourceforge.net/libpng/libpng-1.6.34.tar.xz 
 http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.34-apng.patch.gz
-http://downloads.sourceforge.net/libtirpc/libtirpc-1.0.3.tar.bz2
+http://downloads.sourceforge.net/libtirpc/libtirpc-1.1.4.tar.bz2
 http://sourceforge.net/projects/lsb/files/lsb_release/1.4/lsb-release-1.4.tar.gz
 ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.177.tgz
 https://github.com/Cyan4973/lz4/archive/r131.tar.gz
@@ -173,7 +173,7 @@ http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
 https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.17.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20180105.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/svn/openssh-7.7p1-openssl-1.1.0-1.patch
-https://github.com/djlucas/make-ca/archive/v0.8/make-ca-$version.tar.gz
+https://github.com/djlucas/make-ca/archive/v0.9/make-ca-0.9.tar.gz
 https://hg.mozilla.org/mozilla-central/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt 
 http://www.cacert.org/certs/class3.crt

@@ -6,7 +6,7 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B, Remy, Tnut"
 
 name=harfbuzz
-version=1.8.8
+version=1.9.0
 release=1
 
 source=(https://www.freedesktop.org/software/$name/release/$name-$version.tar.bz2)

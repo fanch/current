@@ -11,9 +11,11 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$name/${version%.*}/$name-$versio
 
 build() {
 cd $name-$version
-MESON $name build
-ninja -C build
-DESTDIR=$PKG meson install -C build
+mkdir build 
+cd build 
+meson --prefix=/usr ..
+ninja 
+DESTDIR=$PKG ninja install
 }
 
 

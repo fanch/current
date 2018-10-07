@@ -13,7 +13,7 @@ alias=(linux-lts)
 
 version=4.14.71
 _version=${version:0:4}
-
+release=1
 run=(nutyx)
 
 # Virtualbox
@@ -24,9 +24,8 @@ _VBARCH=amd64
 ## Download all the sources
 #
 
-source=(\
-$url/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
-$url/pub/linux/kernel/v4.x/patch-$version.xz
+source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_version}.tar.xz
+http://www.kernel.org/pub/linux/kernel/v4.x/patch-$version.xz
 http://download.virtualbox.org/virtualbox/${vb_version}/VirtualBox-${vb_version}-${buildrelease}-Linux_${_VBARCH}.run
 $name.config_64)
 

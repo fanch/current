@@ -6,7 +6,7 @@
 PKGMK_GROUPS=(devel doc man)
 
 name=libarchive
-version=3.3.2
+version=3.3.3
 release=1
 source=(http://www.libarchive.org/downloads/libarchive-$version.tar.gz)
 

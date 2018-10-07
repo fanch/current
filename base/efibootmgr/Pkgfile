@@ -2,13 +2,12 @@
 # URL: https://github.com/rhinstaller/efibootmgr
 # Packager: tnut <tnut@nutyx.org>
 # Depends on: efivar pciutils dosfstools
+run=(dosfstools)
 
 name=efibootmgr
 version=16
 release=1
-
-run=(dosfstools)
-source=($url/releases/download/$version/$name-$version.tar.bz2)
+source=(https://github.com/rhinstaller/$name/releases/download/$version/$name-$version.tar.bz2)
 
 build() {
 cd $name-$version

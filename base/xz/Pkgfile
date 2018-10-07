@@ -9,8 +9,8 @@ name=xz
 version=5.2.4
 release=1
 source=(${url}$name-$version.tar.xz)
-build()
-{
+
+build() {
 cd xz-$version
 
 ./configure --prefix=/usr \

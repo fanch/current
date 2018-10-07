@@ -8,14 +8,15 @@ contributors="Pierre B"
 
 name=graphviz
 version=2.40.1
-release=1
+release=2
 
 source=(https://graphviz.gitlab.io/pub/graphviz/stable/SOURCES/graphviz.tar.gz
         graphviz-2.40.1-qt5-1.patch)
 
 build () {
   cd $name-$version
-
+	
+  sed -e '/ruby/s/1\.9/2.4/' -i configure.ac
   patch -p1 -i ../graphviz-2.40.1-qt5-1.patch
   sed -i '/LIBPOSTFIX="64"/s/64//' configure.ac
 

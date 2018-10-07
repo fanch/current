@@ -2,6 +2,7 @@
 # URL: http://www.icu-project.org/
 # Packager: pierre at nutyx dot org
 # Depends on: 
+
 name=icu
 version=62.1
 release=1

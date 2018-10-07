@@ -4,7 +4,7 @@
 
 name=sharutils
 version=4.15.2
-release=2
+release=3
 
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -15,5 +15,5 @@ echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
-rm -r $PKG/usr/share/info/dir.gz
+rm -r $PKG/usr/share/info
 }

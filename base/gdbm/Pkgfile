@@ -2,7 +2,7 @@
 # URL: http://www.gnu.org/software/gdbm/gdbm.html
 # Maintainer: Philip A. Nelson  phil at cs dot wwu dot edu,Jason Downs downsj at downsj dot com,Sergey Poznyakoff gray at gnu dot org dot ua
 # Contributors: Pierre B
-packager="tnut <tnut@nutyx.org>
+# Packager=tnut <tnut@nutyx.org>
 
 name=gdbm
 version=1.18

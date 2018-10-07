@@ -6,7 +6,7 @@
 PKGMK_GROUPS=(devel doc man)
 
 name=curl
-version=7.60.0
+version=7.61.1
 release=1
 source=(http://curl.haxx.se/download/$name-$version.tar.xz)
 

@@ -7,7 +7,7 @@ contributors="Pierre B"
 
 name=librep
 version=0.92.7
-release=1
+release=2
 
 source=(http://download.tuxfamily.org/$name/${name}_$version.tar.xz)
 
@@ -17,4 +17,5 @@ cd ${name}_$version
 --disable-static
 make || make -j1
 make prefix=$PKG/usr install
+rm -r $PKG/usr/share/info
 }

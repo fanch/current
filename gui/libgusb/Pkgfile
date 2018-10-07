@@ -6,12 +6,10 @@
 name=libgusb
 version=0.3.0
 release=2
-
-source=()
+source=(http://people.freedesktop.org/~hughsient/releases/$name-$version.tar.xz)
 
 build() {
-git clone https://github.com/hughsie/libgusb.git $name
-cd $name
+cd $name-$version
 meson build \
 		--prefix /usr \
 		 -Ddocs=false  

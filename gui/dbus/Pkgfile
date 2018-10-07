@@ -9,10 +9,10 @@ contributors="Pierre B, Jayce"
 
 name=dbus
 version=1.12.10
-release=1
+release=
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
-	dbus.system-local.conf)
+		dbus.system-local.conf)
 
 build() {
 source /etc/blfs-bootscripts

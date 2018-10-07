@@ -4,7 +4,7 @@
 # Contributors: Pierre B
 
 name=keyutils
-version=1.5.10
+version=1.5.11
 release=1
 source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
 

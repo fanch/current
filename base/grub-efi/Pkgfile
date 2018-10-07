@@ -8,7 +8,7 @@ PKGMK_GROUPS=(man locale)
 
 name=grub-efi
 version=2.02
-release=1
+release=2
 source=(unicode.pf2
 	http://ftp.gnu.org/gnu/grub/grub-$version.tar.xz)
 
@@ -31,5 +31,5 @@ build() {
  mv $PKG/usr/share/grub/grub{,-efi}-mkconfig_lib
  cp ../unicode.pf2 $PKG/usr/share/grub/
  
- rm -rf $PKG/usr/share/info/{grub.info.gz,grub-dev.info.gz}
+ rm -rf $PKG/usr/share/info
 }

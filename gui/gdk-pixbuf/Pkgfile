@@ -1,4 +1,4 @@
-# Depends on: meson ninja gobject-introspection shared-mime-info libtiff libpng libjpeg-turbo xorg-libx11 jasper gtk-doc python-six
+# Depends on: meson ninja  gobject-introspection shared-mime-info libtiff libpng libjpeg-turbo xorg-libx11 jasper gtk-doc python-six
 description="Toolkit for image loading and pixel buffer manipulation."
 url="http://www.gtk.org/"
 contributors="Greg, Pierre B, Jayce"
@@ -7,22 +7,15 @@ packager="tnut <tnut@nutyx.org>"
 name=gdk-pixbuf
 version=2.38.0
 release=1
-
 source=(http://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
 mkdir build 
 cd build 
-meson 	--prefix         /usr \
-		--libdir         /usr/lib \
-		--libexecdir     /usr/lib \
-		--datadir        /usr/share \
-		-Djasper=true \
-		-Ddocs=true  \
-		-Dx11=true  \
-		-Drelocatable=true
+meson --prefix=/usr -Djasper=true ..
 ninja 
 DESTDIR=$PKG ninja install
-mkdir -p $PKG/etc/gtk-2.0
 }
+
+

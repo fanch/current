@@ -6,7 +6,7 @@ packager="tnut <tnut@nutyx.org>"
 
 name=dbus-glib
 version=0.110
-release=1
+release=2
 source=(http://dbus.freedesktop.org/releases/$name/$name-$version.tar.gz)
 
 build() {
@@ -16,5 +16,4 @@ cd $name-$version
 --sysconfdir=/etc
 make
 make DESTDIR=$PKG install
-rm $PKG/usr/lib/libdbus-glib-1.la
 }

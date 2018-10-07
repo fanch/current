@@ -1,4 +1,4 @@
-# Depends on: rpcsvc-proto libtirpc docbook-xsl talloc tevent avahi gnutls libgpg-error popt python2 cups kerberos libcap openldap tdb ldb
+# Depends on: tevent jansson rpcsvc-proto libtirpc docbook-xsl talloc tevent avahi gnutls libgpg-error popt python2 cups kerberos libcap openldap tdb ldb
 
 description="SMB Fileserver and AD Domain server"
 url="http://www.samba.org"
@@ -6,7 +6,7 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B, Tnut, Greg"
 
 name=samba
-version=4.8.5
+version=4.9.1
 release=1
 
 source=(https://download.samba.org/pub/samba/stable/$name-$version.tar.gz)
@@ -17,7 +17,7 @@ wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion
 cd $name-$version
 
 echo "^samba4.rpc.echo.*on.*ncacn_np.*with.*object.*nt4_dc" >> selftest/knownfail
-
+export PYTHON=/usr/bin/python2
 CFLAGS+=" -I/usr/include/tirpc"           \
 LDFLAGS+=" -ltirpc"                       \
 ./configure                             \

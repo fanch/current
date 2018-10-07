@@ -9,7 +9,7 @@ run=( perl )
 
 name=perl-crypt-openssl-bignum
 version=0.09
-release=1
+release=2
 source=(http://search.cpan.org/CPAN/authors/id/K/KM/KMX/Crypt-OpenSSL-Bignum-$version.tar.gz)
 
 build() {
@@ -19,4 +19,6 @@ make
 make pure_install doc_install DESTDIR=$PKG
 
 find $PKG -name '.packlist' -delete
+
+rm -r $PKG/usr/lib/share/perl5/base/perllocal.pod
 }
