@@ -1,4 +1,4 @@
-# Depends on: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate bluez gconf 
+# Depends on: fftw intltool json-c libsndfile alsa-lib dbus glib libcap openssl speex libsamplerate bluez gconf sbc
 
 description="A featureful, general-purpose sound server"
 url="http://www.pulseaudio.org"

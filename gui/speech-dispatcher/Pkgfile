@@ -22,4 +22,5 @@ autoreconf -i
 make
 make DESTDIR="$PKG" install
 sed -i 's|includedir=.*|includedir=${prefix}/include/speech-dispatcher|g' "$PKG/usr/lib/pkgconfig/speech-dispatcher.pc"
+rm -r $PKG/usr/share/info
 }
