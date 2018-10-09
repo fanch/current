@@ -6,15 +6,17 @@ packager="remy <remy@nutyx.org>"
 contributors="Pierre B,tnut"
 
 name=highlight
-version=3.45
+version=3.46
 release=1
-
 source=(http://www.andre-simon.de/zip/$name-$version.tar.bz2)
 
 build(){
     cd $name-$version
     make 
     make gui
+}
+package(){
+    cd $name-$version
     make DESTDIR=$PKG install
     make DESTDIR=$PKG install-gui
 }
