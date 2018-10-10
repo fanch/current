@@ -1,4 +1,4 @@
-# Depends on: dbus-python sip qtbase
+# Depends on: dbus-python sip qtbase python-enum34
 
 description="connector python for qt"
 url="http://www.riverbankcomputing.co.uk/software/pyqt/intro"
@@ -6,20 +6,46 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B"
 
 name=python2-qt
-version=5.11.2
+version=5.11.3
+release=1
+source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz
+        qtwebkit.patch)
 
-source=(http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$version/PyQt5_gpl-$version.tar.gz)
 build() {
-cd PyQt5_gpl-$version
+	cd PyQt5_gpl-$version
+	patch -p1 -i $SRC/qtwebkit.patch
 
-python configure.py   \
-     -v /usr/share/sip \
-     -q /usr/bin/qmake \
-     --confirm-license \
-     --qsci-api
+	export PYTHONPATH=/usr/lib/python2.7/site-packages/PyQt5
+	/usr/bin/python configure.py \
+		--confirm-license \
+		--verbose \
+		--no-dist-info \
+		--qml-plugindir=/usr/lib/qt5/plugins/PyQt5/python2 \
+		--designer-plugindir=/usr/lib/qt5/plugins/designer/python2 \
+		--qsci-api \
+		--qmake=/usr/bin/qmake
+	make
+	INSTALL_ROOT=$PKG make install
+	mv $PKG/usr/share/sip $PKG/usr/share/sip2
+	# this was already touched by pyqt5-sip to get the sip module to import
+	rm $PKG/usr/lib/python2.7/site-packages/PyQt5/__init__.py
 
-find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
-make
-make DESTDIR=$PKG INSTALL_ROOT=$PKG install
-
+	if test -L /usr/bin/python3
+	then
+		export PYTHONPATH=/usr/lib/python3.7/site-packages/PyQt5
+		/usr/bin/python3 configure.py \
+			--confirm-license \
+			--verbose \
+			--no-dist-info \
+			--qsci-api \
+			--sip=/usr/bin/sip \
+			--qml-plugindir=/usr/lib/qt5/plugins/PyQt5/python3 \
+			--designer-plugindir=/usr/lib/qt5/plugins/designer/python3 \
+			--qmake=/usr/bin/qmake
+		make
+		INSTALL_ROOT=$PKG make install
+		rm -r $PKG/usr/bin
+		rm -r $PKG/usr/share/qt
+		mv $PKG/usr/share/sip $PKG/usr/share/sip3
+	fi
 }

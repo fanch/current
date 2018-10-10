@@ -1,0 +1,12 @@
+diff -Naur PyQt5_gpl-5.11.2.dev1806291220.orig/sip/QtWebKitWidgets/qgraphicswebview.sip PyQt5_gpl-5.11.2.dev1806291220/sip/QtWebKitWidgets/qgraphicswebview.sip
+--- PyQt5_gpl-5.11.2.dev1806291220.orig/sip/QtWebKitWidgets/qgraphicswebview.sip	2018-06-30 02:34:42.000000000 +0000
++++ PyQt5_gpl-5.11.2.dev1806291220/sip/QtWebKitWidgets/qgraphicswebview.sip	2018-07-12 14:01:59.443765118 +0000
+@@ -121,7 +121,7 @@
+ 
+ %ModuleHeaderCode
+ // This is needed by the %ConvertSubClassCode.
+-#include <QGraphicsWebView>
++#include <qgraphicswebview.h>
+ 
+ // This is needed for Qt v5.0.0.
+ #if defined(B0)
