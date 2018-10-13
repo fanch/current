@@ -6,9 +6,19 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B"
 
 name=breeze-icons
-version=5.48.0
-
+version=5.50.0
+release=1
 run=(gtk-update-icon-cache)
 
 source=(http://download.kde.org/stable/frameworks/${version%.*}/$name-$version.tar.xz)
-build=kde5
+
+build() {
+mkdir -p build
+cd ${name}-$version
+cmake ../$name-$version \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBINARY_ICONS_RESOURCE=ON \
+    -DBUILD_TESTING=OFF
+  make
+make DESTDIR=$PKG install
+}

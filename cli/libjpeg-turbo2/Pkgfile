@@ -1,0 +1,25 @@
+# Description: Fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+# URL: http://libjpeg-turbo.virtualgl.org/
+# Packager: pierre at nutyx dot org
+# Depends on: cmake nasm 
+
+name=libjpeg-turbo2
+_name=libjpeg-turbo
+version=2.0.0
+release=1
+
+source=(http://sourceforge.net/projects/libjpeg-turbo/files/$version/libjpeg-turbo-$version.tar.gz)
+
+build() {
+cd ${_name}-$version
+mkdir build &&
+cd    build &&
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=RELEASE  \
+      -DENABLE_STATIC=FALSE       \
+      -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/libjpeg-turbo-2.0.0 \
+      -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib  \
+      ..
+make
+make DESTDIR=$PKG install
+}

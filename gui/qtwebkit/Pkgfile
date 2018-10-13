@@ -9,25 +9,20 @@ run=()
 
 name=qtwebkit
 version=5.9.0
-release=2
+release=3
 
 source=(https://download.qt.io/community_releases/5.9/$version-final/$name-opensource-src-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/blfs/svn/qtwebkit-5.9.0-icu_59-1.patch)
+		qtwebkit-5.9.0-icu_59-1.patch)
 
 build() {
-
 cd $name-opensource-src-$version
-
-patch -p1 -i ../qtwebkit-5.9.0-icu_59-1.patch
+patch -p1 -i $SRC/qtwebkit-5.9.0-icu_59-1.patch
 sed -e '/CONFIG/a QMAKE_CXXFLAGS += -Wno-expansion-to-defined' \
 -i Tools/qmake/mkspecs/features/unix/default_pre.prf
 
 mkdir build
 cd build
-
 qmake ../WebKit.pro
 make
-
 make INSTALL_ROOT=$PKG install 
-
 }

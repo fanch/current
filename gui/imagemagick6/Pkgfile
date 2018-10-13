@@ -1,0 +1,27 @@
+# Depends on: freetype ghostscript lcms libgsf giflib libxml2 openexr libwmf libpng librsvg libwebp djvulibre
+
+description="An image viewing/manipulation program"
+url="http://www.imagemagick.org/"
+packager="tnut <tnut@nutyx.org>"
+
+name=imagemagick
+version=6.9.10.10 
+_version=6.9.10-10 
+release=1
+
+source=(https://ftp.osuosl.org/pub/blfs/conglomeration/ImageMagick/ImageMagick-${_version}.tar.xz
+		ImageMagick-${_version}-libs_only-1.patch)
+
+build () {
+    cd ImageMagick-${_version}
+    patch -Np1 -i $SRC/ImageMagick-${_version}-libs_only-1.patch  
+    autoreconf -fi                                        
+./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --enable-hdri     \
+            --with-modules    \
+            --disable-static  
+    make
+    make DESTDIR=$PKG install
+    find  $PKG -name perllocal.pod -exec rm {} \;
+}
