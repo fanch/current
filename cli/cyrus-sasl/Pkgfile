@@ -8,8 +8,8 @@ version=2.1.26
 release=4
 
 source=(ftp://ftp.cyrusimap.org/cyrus-sasl/$name-$version.tar.gz
-	  http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-2.1.26-fixes-3.patch
-	  http://www.linuxfromscratch.org/patches/blfs/svn/cyrus-sasl-2.1.26-openssl-1.1.0-1.patch)
+		cyrus-sasl-2.1.26-fixes-3.patch
+		cyrus-sasl-2.1.26-openssl-1.1.0-1.patch)
 
 build() {
 	cd $name-$version

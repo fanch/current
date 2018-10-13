@@ -10,7 +10,7 @@ version=5.50
 release=1
 
 source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz
-	http://www.linuxfromscratch.org/patches/blfs/svn/$name-$version-obexd_without_systemd-1.patch)
+	    $name-$version-obexd_without_systemd-1.patch)
 	
 build() {
 source /etc/blfs-bootscripts

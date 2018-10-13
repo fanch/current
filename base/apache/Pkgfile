@@ -7,7 +7,7 @@ name=apache
 version=2.4.34
 release=1
 source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
-	 http://www.linuxfromscratch.org/patches/blfs/svn/httpd-$version-blfs_layout-1.patch)
+		httpd-$version-blfs_layout-1.patch)
 
 build(){
 unset MAKEFLAGS

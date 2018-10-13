@@ -12,7 +12,7 @@ version=1.2.5
 release=1
 
 source=(http://downloads.sourceforge.net/rpcbind/rpcbind-$version.tar.bz2
-		http://www.linuxfromscratch.org/patches/blfs/svn/rpcbind-$version-vulnerability_fixes-1.patch)
+		rpcbind-$version-vulnerability_fixes-1.patch)
 
 build() {
 source /etc/blfs-bootscripts
