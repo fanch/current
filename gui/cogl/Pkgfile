@@ -28,5 +28,4 @@ autoreconf -fi
 --enable-cogl-gst=yes 
 make
 make DESTDIR=$PKG install
-rm $PKG/usr/lib/{libcogl,libcogl-path,libcogl-pango,libcogl-gles2}.la
 }

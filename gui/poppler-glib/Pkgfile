@@ -7,7 +7,7 @@ contributors="Alienus"
 
 name=poppler-glib
 version=0.67.0
-release=1
+release=2
 
 source=(http://poppler.freedesktop.org/poppler-$version.tar.xz)
 
@@ -20,9 +20,9 @@ cd    build
 cmake   -DCMAKE_BUILD_TYPE=Release   \
 	-DCMAKE_INSTALL_PREFIX=/usr  \
 	-DTESTDATADIR=$PWD/testfiles \
-	-DENABLE_XPDF_HEADERS=OFF    \
+	-DENABLE_XPDF_HEADERS=ON    \
 	-DENABLE_POPPLER_QT4=OFF     \
-        -DENABLE_POPPLER_GLIB=ON     \
+    -DENABLE_POPPLER_GLIB=ON     \
 	-DENABLE_GTK_DOC=OFF         \
 	..
 
