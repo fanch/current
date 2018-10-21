@@ -1,7 +1,7 @@
 # Description: Libraries and utilities used for parsing XML files.
 # URL: http://xmlsoft.org/
 # Packager: Pierre at nutyx dot org
-# Depends on: python
+# Depends on: python python2
  
 name=libxml2
 version=2.9.8
