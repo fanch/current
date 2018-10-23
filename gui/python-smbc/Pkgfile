@@ -1,4 +1,4 @@
-# Depends on: python samba
+# Depends on: python python2 samba
 
 description="Python bindings for the libsmbclient library from the samba project."
 url="https://pypi.python.org/pypi/pysmbc/"
@@ -6,12 +6,13 @@ packager="tnut <tnut@nutyx.org>"
 
 name=python-smbc
 version=1.0.15.8
-release=3
+release=4
 
 _name=pysmbc
 source=(https://pypi.io/packages/source/p/pysmbc/pysmbc-$version.tar.bz2)
 
 build() {
     cd pysmbc-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
     python3 setup.py install --prefix=/usr --root=$PKG
 }

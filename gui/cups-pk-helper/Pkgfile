@@ -7,13 +7,14 @@ packager="tnut <tnut@nutyx.org>"
 
 name=cups-pk-helper
 version=0.2.6
-release=1
+release=2
 
 source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
 
 build() {
 cd $name-$version
-./configure --prefix=/usr --sysconfdir=/etc
+./configure --prefix=/usr --sysconfdir=/etc \
+    --libexecdir=/usr/lib/cups-pk-helper
 make
 make DESTDIR=$PKG install
 }
