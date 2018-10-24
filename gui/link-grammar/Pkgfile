@@ -1,0 +1,18 @@
+# Depends on: apache-ant
+
+description="A Grammar Checking library"
+url="https://www.abisource.com/projects/link-grammar/"
+packager="fanch <fanch@nutyx.org>"
+contributors="Pierre B"
+
+name=link-grammar
+version=5.5.0
+release=1
+source=(https://www.abisource.com/downloads/${name}/${version}/${name}-${version}.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr 
+make
+make DESTDIR=$PKG install
+}
