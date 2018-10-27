@@ -1,0 +1,17 @@
+# Description: Python3 documentation generator.
+# URL: http://www.sphinx-doc.org/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-docutils python-setuptools
+ 
+name=python-sphinx
+version=1.8.1
+release=1
+
+source=(https://pypi.org/packages/source/S/Sphinx/Sphinx-$version.tar.gz)
+
+build() {
+    cd Sphinx-$version
+    python3 setup.py install --prefix=/usr --root=$PKG
+}
+
