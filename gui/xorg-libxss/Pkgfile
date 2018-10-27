@@ -1,0 +1,22 @@
+# Depends on: xorg-util-macros xorgproto xorg-libxext xorg-libx11
+
+description="X11 Screen Saver extension library"
+url="https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver"
+packager="fanch <fanch@nutyx.org>"
+contributors="Pierre B, Greg"
+
+name=xorg-libxss
+version=1.2.3
+release=1
+_name=libXScrnSaver
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-${version}.tar.bz2)
+
+build() {
+
+cd ${_name}-${version}
+./configure --prefix=/usr --sysconfdir=/etc 
+make
+make DESTDIR=$PKG install
+}
+
