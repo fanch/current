@@ -1,0 +1,20 @@
+# Description: GTK Interface Builder.
+# URL: http://glade.gnome.org/
+# Maintainer: Danny Rawlins, crux at romster dot me
+# Packager: Thomas Penteker, tek at serverop dot de
+# Depends on: docbook-xsl gtk3 itstool libglade
+
+name=glade
+version=3.22.1
+release=1
+source=(https://ftp.gnome.org/pub/GNOME/sources/$name/${version::4}/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure \
+		--prefix=/usr \
+		--disable-gtk-doc-html \
+		--disable-nls
+	make
+	make DESTDIR=$PKG install
+}

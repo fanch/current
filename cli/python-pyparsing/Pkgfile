@@ -1,0 +1,17 @@
+# Description: Python parsing module.
+# URL: https://pypi.python.org/pypi/pyparsing/
+# Packager: NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools
+
+name=python-pyparsing
+version=2.2.2
+release=1
+source=(https://files.pythonhosted.org/packages/source/${name:7:1}/${name#*-}/${name#*-}-$version.tar.gz)
+
+build() {
+	cd ${name#*-}-$version
+	python2 setup.py build
+	python3 setup.py build
+	python2 setup.py install --prefix=/usr --root=$PKG
+    python3 setup.py install --prefix=/usr --root=$PKG
+}

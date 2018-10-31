@@ -7,13 +7,18 @@ contributors="Tyrry"
 
 name=libwnck2
 version=2.31.0
-release=2
+release=3
 
-source=(http://ftp.gnome.org/pub/gnome/sources/libwnck/${version%.*}/libwnck-$version.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/libwnck/${version%.*}/libwnck-$version.tar.xz
+		WindowActionMenu-unset-window-and-stop-async-events-on-dispose.patch)
 build() {
 	cd libwnck-$version
-	./configure --prefix=/usr --program-suffix=-1
-	make GETTEXT_PACKAGE=libwnck-1
-	make DESTDIR=$PKG GETTEXT_PACKAGE=libwnck-1 install
+	patch -Np1 -i $SRC/WindowActionMenu-unset-window-and-stop-async-events-on-dispose.patch
+	./configure --prefix=/usr --sysconfdir=/etc \
+        --localstatedir=/var --disable-static
+	make DESTDIR=$PKG  install
+	rm -f ${PKG}/usr/bin/wnckprop
+    rm -f ${PKG}/usr/bin/wnck-urgency-monitor
+    rmdir ${PKG}/usr/bin
 }
 

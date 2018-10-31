@@ -1,0 +1,17 @@
+# Description: A built-package format for Python.
+# URL: https://pypi.python.org/pypi/wheel
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: python-setuptools
+
+name=python-wheel
+version=0.32.1
+release=1
+
+source=(https://pypi.io/packages/source/w/wheel/wheel-$version.tar.gz)
+
+build() {
+    cd wheel-$version
+    python2 setup.py install --prefix=/usr --root=$PKG
+    python3 setup.py install --prefix=/usr --root=$PKG
+}

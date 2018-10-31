@@ -6,7 +6,7 @@ packager="pierre <pierre@nutyx.org>"
 contributors="Pierre B, tnut"
 
 name=rustc
-version=1.29.1
+version=1.29.2
 release=1
 source=(http://static.rust-lang.org/dist/$name-$version-src.tar.gz)
 

@@ -5,7 +5,7 @@
 # Depends on: python python-setuptools
  
 name=python-pip
-version=8.1.2
+version=9.0.3
 release=1
 
 source=(https://pypi.io/packages/source/p/pip/pip-$version.tar.gz)
@@ -13,7 +13,6 @@ source=(https://pypi.io/packages/source/p/pip/pip-$version.tar.gz)
 build() {
     cd pip-$version
     python2 setup.py install --prefix=/usr --root=$PKG
-
     mkdir -p $PKG/usr/share/doc/$name-$version
     cp -Rf docs/* $PKG/usr/share/doc/$name-$version 
 }

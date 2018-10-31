@@ -4,12 +4,14 @@
 # Depends on: python2 python
 
 name=python-setuptools
-version=40.0.0
-release=2
-source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.zip)
-        
+version=40.5.0
+release=1
+source=(https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-${version}.zip)
+
 build() {
     cd setuptools-$version
+    python2 bootstrap.py
     python2 setup.py build install --root=$PKG
+    python3 bootstrap.py
     python3 setup.py build install --root=$PKG       
 }

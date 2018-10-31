@@ -2,11 +2,11 @@
 # URL: URL: https://virtualenv.pypa.io/ 
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
-# Depends on: python2 python
+# Depends on: python2 python-setuptools python-sphinx
 
 name=python-virtualenv
-version=15.0.2
-release=2
+version=16.0.0
+release=1
 
 source=(https://pypi.io/packages/source/v/virtualenv/virtualenv-$version.tar.gz)
 
