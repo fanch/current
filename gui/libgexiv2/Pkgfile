@@ -7,14 +7,15 @@ contributor="Jayce"
 
 name=libgexiv2
 version=0.10.8
-release=1
+release=2
 source=(http://ftp.gnome.org/pub/gnome/sources/${name/lib/}/${version%.*}/${name/lib/}-$version.tar.xz)
 
 build() {
 cd gexiv2-$version
 mkdir build
 cd    build
-meson --prefix=/usr
+meson --prefix=/usr \
+    -Denable-gtk-doc=true
 ninja
 DESTDIR=$PKG ninja install
 }
