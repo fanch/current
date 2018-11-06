@@ -6,7 +6,7 @@
 PKGMK_GROUPS=(devel man doc)
 
 name=e2fsprogs
-version=1.44.3
+version=1.44.4
 release=1
 source=(http://prdownloads.sourceforge.net/$name/$name-$version.tar.gz)
 
