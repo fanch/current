@@ -4,7 +4,7 @@
 # Depends on: pcre apr-util sqlite expat 
 
 name=apache
-version=2.4.34
+version=2.4.37
 release=1
 source=(http://archive.apache.org/dist/httpd/httpd-$version.tar.bz2
 		httpd-$version-blfs_layout-1.patch)
