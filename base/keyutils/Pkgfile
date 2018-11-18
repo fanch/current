@@ -4,14 +4,14 @@
 # Contributors: Pierre B
 
 name=keyutils
-version=1.5.11
+version=1.6
 release=1
-source=( http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 )
+source=(http://people.redhat.com/~dhowells/$name/$name-$version.tar.bz2 
+		request-key.conf.patch)
 
 build() {
-	unset MAKEFLAGS
         cd $name-$version
-	sed -i "s/-O2/${CFLAGS}/" Makefile
+        patch -Np0 -i $SRC/request-key.conf.patch
         make
         make DESTDIR=$PKG install
 }
