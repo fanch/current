@@ -21,11 +21,12 @@ wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion
     sed -i "/servname/s:rpcbind:sunrpc:" src/rpcbind.c
 
     patch -Np1 -i ../rpcbind-$version-vulnerability_fixes-1.patch
-    ./configure --prefix=/usr       \
-                --bindir=/sbin      \
-                --with-rpcuser=root \
-		--enable-warmstarts \
-		--without-systemdsystemunitdir
+   ./configure --prefix=/usr                                  \
+            --bindir=/sbin                                 \
+            --sbindir=/sbin                                \
+            --with-rpcuser=root                            \
+            --enable-warmstarts                            \
+            --without-systemdsystemunitdir    
     make
     make DESTDIR=$PKG install
 
@@ -33,5 +34,4 @@ cd $SRC
 tar xf $scripts-$scriptsversion.tar.bz2
 cd $SRC/$scripts-$scriptsversion
     make DESTDIR=$PKG install-rpcbind
-    make DESTDIR=$PKG install-netfs
 }
