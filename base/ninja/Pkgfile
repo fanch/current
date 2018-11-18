@@ -6,11 +6,13 @@
 
 name=ninja
 version=1.8.2
-release=4
-source=(https://github.com/ninja-build/$name/archive/v$version/$name-$version.tar.gz)
+release=2
+source=(https://github.com/ninja-build/$name/archive/v$version/$name-$version.tar.gz
+		ninja-1.8.2-add_NINJAJOBS_var-1.patch)
 	
 build() {
 	cd $name-$version
+	patch -Np1 -i ../ninja-1.8.2-add_NINJAJOBS_var-1.patch
 	python3 configure.py --bootstrap
 	install -vm755 -D ninja $PKG/usr/bin/ninja
 	install -vDm644 -D misc/bash-completion $PKG/usr/share/bash-completion/completions/ninja
