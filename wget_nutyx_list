@@ -121,7 +121,7 @@ http://downloads.sourceforge.net/libpng/libpng-1.6.35.tar.xz
 http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.35-apng.patch.gz
 http://downloads.sourceforge.net/libtirpc/libtirpc-1.1.4.tar.bz2
 http://sourceforge.net/projects/lsb/files/lsb_release/1.4/lsb-release-1.4.tar.gz
-ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.177.tgz
+https://sourceware.org/pub/lvm2/LVM2.2.03.01.tgz
 https://github.com/Cyan4973/lz4/archive/r131.tar.gz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 http://download.savannah.gnu.org/releases/man-db/man-db-2.8.3.tar.xz
@@ -131,8 +131,7 @@ http://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03-xdoc.tar.xz
 http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
 http://downloads.sourceforge.net/nfs/nfs-utils-2.2.1.tar.bz2
 http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2017.3.23.tgz
-http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.8p1.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/openssh-7.8p1-openssl-1.1.0-1.patch
+http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.9p1.tar.gz
 ftp://ftp.openssl.org/source/openssl-1.1.0h.tar.gz
 http://linux-pam.org/library/Linux-PAM-1.3.0.tar.bz2
 https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.5.6.tar.xz
@@ -165,7 +164,7 @@ http://downloads.sourceforge.net/rpcbind/rpcbind-1.2.5.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/svn/rpcbind-1.2.5-vulnerability_fixes-1.patch
 http://rsync.samba.org/ftp/rsync/rsync-3.1.3.tar.gz
 http://downloads.sourceforge.net/sourceforge/squashfs/squashfs4.3.tar.gz
-http://www.sudo.ws/sudo/dist/sudo-1.8.25.tar.gz
+http://www.sudo.ws/sudo/dist/sudo-1.8.25p1.tar.gz
 http://ftp.gnu.org/gnu/wget/wget-1.19.5.tar.gz
 https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/wireless_tools-29-fix_iwlist_scanning-1.patch
@@ -174,7 +173,7 @@ http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
 https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.17.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20180105.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/svn/openssh-7.7p1-openssl-1.1.0-1.patch
-https://github.com/djlucas/make-ca/archive/v0.9/make-ca-0.9.tar.gz
+https://github.com/djlucas/make-ca/archive/v0.8/make-ca-0.8.tar.gz
 https://hg.mozilla.org/mozilla-central/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt 
 http://www.cacert.org/certs/class3.crt
