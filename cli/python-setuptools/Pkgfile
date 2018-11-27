@@ -4,14 +4,19 @@
 # Depends on: python2 python
 
 name=python-setuptools
-version=40.5.0
+version=40.6.2
 release=1
 source=(https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-${version}.zip)
 
 build() {
-    cd setuptools-$version
-    python2 bootstrap.py
-    python2 setup.py build install --root=$PKG
-    python3 bootstrap.py
-    python3 setup.py build install --root=$PKG       
+  cd $SRC/setuptools-$version
+    
+  python3 bootstrap.py  
+  python3 setup.py build install --root=$PKG  --optimize=1 --skip-build
+    
+  python2 bootstrap.py
+  python2 setup.py build install --root=$PKG   --optimize=1 --skip-build 
+  
+  rm -r $PKG/usr/lib/python3.7/site-packages
+  rm -r $PKG/usr/bin/easy_install-3.7
 }
