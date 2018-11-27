@@ -16,6 +16,7 @@ source=(https://github.com/BelledonneCommunications/bctoolbox/archive/$version.t
 build() {
 mkdir -p build
 cd build
+CFLAGS="-Wno-stringop-truncation"
 cmake ../$name-$version \
     -DCMAKE_INSTALL_PREFIX=/usr \
 	-DENABLE_TESTS_COMPONENT=OFF
