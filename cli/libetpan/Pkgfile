@@ -1,28 +1,25 @@
 # Description: A portable middleware for email access
 # URL: http://www.etpan.org/
-# Packager: pierre at nutyx dot org
-# Depends on: curl expat 
+# Packager: fanch at nutyx dot org
+# Depends on: curl expat db
 
-PKGMK_KEEP_SOURCES="no"
 name=libetpan
-version=1.8
-release=2
+version=1.9.1
+release=1
 
 source=(https://github.com/dinhviethoa/libetpan/archive/$version/$name-$version.tar.gz)
 
 build() {
   cd $name-$version
-  libtoolize --force --copy
-  aclocal -I m4
-  autoheader
-  autoconf
-  automake --add-missing \
-           --foreign     \
-           --force --copy
-
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr    \
               --disable-static \
-              --disable-db
+              --enable-ipv6 \
+              --with-curl \
+              --with-expat \
+              --with-openssl \
+			  --with-zlib \
+              --with-sasl
   make
   make DESTDIR=$PKG install
 }
