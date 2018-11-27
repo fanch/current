@@ -1,19 +1,19 @@
 # Description: Client-side application which queries directory service
 # URL: URL: http://ftp.debian.org/debian/pool/main/w/whois
-# Packager: alienus at nutyx dot org
+# Packager: fanch at nutyx dot org
 # Depends on: 
 
 name=whois
-version=5.3.2
+version=5.4.0
 release=1
 source=(http://ftp.debian.org/debian/pool/main/w/$name/$name\_$version.tar.xz)
 
 build() {
     cd $name-$version
-    sed -i "/^CFLAGS/s/=.*$/=$CFLAGS/" Makefile
-    make CONFIG_FILE='/etc/whois.conf' whois
-    install -D -m 0755 whois $PKG/usr/bin/whois
-    install -D -m 0644 whois.1 $PKG/usr/share/man/man1/whois.1
-    install -D -m 0644 whois.conf.5 $PKG/usr/share/man/man5/whois.conf.5
-    install -D -m 0644 whois.conf $PKG/etc/whois.conf
+    make \
+		CONFIG_FILE=/etc/whois.conf \
+		CFLAGS="$CFLAGS $CPPFLAGS" \
+		HAVE_ICONV=1
+    make prefix=/usr BASEDIR=$PKG install-whois
+	install -D -m644 whois.conf $PKG/etc/whois.conf
 }
