@@ -8,7 +8,7 @@ name=python-ecdsa
 version=0.13
 release=1
 
-source=(http://pypi.python.org/packages/source/e/ecdsa/ecdsa-$version.tar.gz)
+source=(https://pypi.python.org/packages/source/e/ecdsa/ecdsa-$version.tar.gz)
 
 build() {
     cd ecdsa-$version
