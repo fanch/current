@@ -1,9 +1,9 @@
 # Description: Portable cryptographic and SSL/TLS library
 # URL:         https://tls.mbed.org/
-packager="tnut <tnut@nutyx.org>"
+packager="fanch <fanch@nutyx.org>"
 
 name=mbedtls
-version=2.8.0
+version=2.13.0
 release=1
 source=(https://tls.mbed.org/download/$name-$version-gpl.tgz)
 
