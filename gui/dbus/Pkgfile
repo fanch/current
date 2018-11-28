@@ -9,7 +9,7 @@ contributors="Pierre B, Jayce"
 
 name=dbus
 version=1.12.10
-release=
+release=1
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \
 		dbus.system-local.conf)
