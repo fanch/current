@@ -4,9 +4,9 @@
 # Depends on: python-setuptools
 
 name=python-urllib3
-version=1.23
+version=1.24.1
 release=1
-source=(https://files.pythonhosted.org/packages/source/${name:8:1}/${name#*-}/${name#*-}-$version.tar.gz)
+source=(https://files.pythonhosted.org/packages/b1/53/37d82ab391393565f2f831b8eedbffd57db5a718216f82f1a8b4d381a1c1/urllib3-1.24.1.tar.gz)
 
 build() {
 	cd ${name#*-}-$version
