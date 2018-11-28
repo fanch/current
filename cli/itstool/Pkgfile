@@ -12,7 +12,7 @@ source=(http://files.itstool.org/itstool/$name-$version.tar.bz2 itstool-2.0.4-se
 build() {
 cd $name-$version
 patch -Np1 -i ../itstool-2.0.4-segfault-1.patch
-./configure --prefix=/usr
+PYTHON=/usr/bin/python3 ./configure --prefix=/usr
 make
 make DESTDIR=$PKG install
 }
