@@ -8,7 +8,7 @@ name=js38
 version=38.2.1
 release=1
 
-source=(https://people.mozilla.org/~sstangl/mozjs-$version.rc0.tar.bz2
+source=(http://anduin.linuxfromscratch.org/BLFS/mozjs/mozjs-$version.rc0.tar.bz2
 		js38-$version-upstream_fixes-2.patch)
 
 build() {
