@@ -18,6 +18,4 @@ build() {
 		--disable-static
 	make || make -j1
 	make install DESTDIR=$PKG
-
-rm $PKG/usr/lib/libsmpeg.la
 }
