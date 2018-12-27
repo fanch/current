@@ -3,16 +3,16 @@
 # NuTyX package info file (http://nutyx.org)
 # Packager: # NuTyX package info file (http://nutyx.org)
 
-# Depends on: python2
+# Depends on: python
 name=python-docutils
 version=0.12
-release=1
+release=2
 
 source=(http://downloads.sourceforge.net/docutils/docutils-$version.tar.gz)
 
 build() {
     cd docutils-$version
-    python2 setup.py install --root=$PKG
+    python3 setup.py install --root=$PKG
 }
 
 

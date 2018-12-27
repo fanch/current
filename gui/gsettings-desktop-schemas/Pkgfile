@@ -6,6 +6,7 @@ packager="fanch <fanch@nutyx.org>"
 contributors="Pierre B"
 
 run=( glib )
+
 name=gsettings-desktop-schemas
 version=3.28.1
 release=1

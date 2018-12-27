@@ -4,13 +4,12 @@
 # Contributors: Pierre B
 
 name=libcap
-version=2.25
-release=2
+version=2.26
+release=1
 source=(https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$version.tar.xz)
 
 build() {
 cd libcap-$version
-sed -i 's:LIBDIR:PAM_&:g' pam_cap/Makefile
 sed -i '/install.*STALIBNAME/d' libcap/Makefile
 
 make

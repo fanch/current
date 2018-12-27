@@ -4,7 +4,7 @@
 # Depends on: cmake libevent boost lz4 libxml2 cracklib pcre
 
 name=mariadb
-version=10.3.9
+version=10.3.11
 release=1
 
 source=(https://downloads.mariadb.org/interstitial/mariadb-$version/source/mariadb-$version.tar.gz)
