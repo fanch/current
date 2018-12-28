@@ -4,10 +4,10 @@
 # Depends on: libatomic-ops 
 
 name=gc
-version=7.6.6
+version=8.0.0
 release=1
 
-source=(https://github.com/ivmai/bdwgc/releases/download/v${version}/${name}-${version}.tar.gz)
+source=(http://www.hboehm.info/gc/gc_source/${name}-${version}.tar.gz)
 
 build() {
 cd gc-*
