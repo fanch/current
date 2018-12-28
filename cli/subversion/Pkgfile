@@ -6,7 +6,7 @@ packager="tnut <tnut@nutyx.org>"
 # Depends on: apr apr-util neon expat sqlite db cyrus-sasl serf utf8proc
 
 name=subversion
-version=1.10.2
+version=1.11.0
 release=1
 
 source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)
@@ -14,11 +14,11 @@ source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2)
 build() {
 unset MAKEFLAGS
 	cd $name-$version
-	./configure --prefix=/usr \
-		--with-serf \
-		--with-utf8proc=internal \
-		--disable-static
+	./configure --prefix=/usr             \
+            --disable-static          \
+            --with-apache-libexecdir  \
+            --with-lz4=internal       \
+            --with-utf8proc=internal
 	make
-
 	make DESTDIR=$PKG install
 }
