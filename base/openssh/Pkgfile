@@ -4,10 +4,9 @@
 # Packager: tnut <tnut@nutyx.org>
 
 name=openssh
-version=7.8p1
+version=7.9p1
 release=1
-source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz
-	openssh-$version-openssl-1.1.0-1.patch)
+source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz)
 
 build() {
 unset MAKEFLAGS
@@ -19,7 +18,6 @@ source /etc/blfs-bootscripts
 
 install -v -m700 -d $PKG/var/lib/sshd
 chown -v root:sys $PKG/var/lib/sshd
-patch -Np1 -i ../openssh-$version-openssl-1.1.0-1.patch
 
 ./configure --prefix=/usr                     \
             --sysconfdir=/etc/ssh             \
@@ -47,5 +45,5 @@ $PKG/usr/share/doc/$name-$version
 
 # Service
 cd   $scripts-$scriptsversion
-	make DESTDIR=$PKG install-sshd
+make DESTDIR=$PKG install-sshd
 }

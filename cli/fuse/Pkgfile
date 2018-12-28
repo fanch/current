@@ -6,8 +6,8 @@ contributors="Pierre B"
 description="Library that makes it possible to implement a filesystem in a userspace program."
 
 name=fuse
-version=3.2.6
-release=6
+version=3.3.0
+release=1
 
 source=(https://github.com/libfuse/libfuse/releases/download/$name-$version/$name-$version.tar.xz
 		fuse.conf)
@@ -15,8 +15,8 @@ source=(https://github.com/libfuse/libfuse/releases/download/$name-$version/$nam
 build() {
 		cd fuse-$version
 		sed -i '/^udev/,$ s/^/#/' util/meson.build
-		mkdir build &&
-		cd    build &&
+		mkdir build 
+		cd    build 
 		meson --prefix=/usr --libdir=/usr/lib
 		ninja -j1
 		DESTDIR=$PKG ninja  install
@@ -25,15 +25,15 @@ build() {
 		
 		mkdir -p $PKG/{bin,lib,sbin,usr/lib}
 		mv -vf   $PKG/usr/lib/libfuse3.so.* $PKG/lib                 
-		ln -sfvn ../../lib/libfuse3.so.3.2.6 $PKG/usr/lib/libfuse3.so 
+		ln -sfvn ../../lib/libfuse3.so.3.3.0 $PKG/usr/lib/libfuse3.so 
 
 		mv -vf $PKG/usr/bin/fusermount3  $PKG/bin         
 		mv -vf $PKG/usr/sbin/mount.fuse3 $PKG/sbin        
 		chmod u+s $PKG/bin/fusermount3                
 
-		install -v -m755 -d $PKG/usr/share/doc/fuse-3.2.6      
+		install -v -m755 -d $PKG/usr/share/doc/fuse-3.3.0
 		install -v -m644    ../doc/{README.NFS,kernel.txt} \
-                    $PKG/usr/share/doc/fuse-3.2.6      
-		cp -Rv ../doc/html  $PKG/usr/share/doc/fuse-3.2.6 
+                    $PKG/usr/share/doc/fuse-3.3.0
+		cp -Rv ../doc/html  $PKG/usr/share/doc/fuse-3.3.0
     
 }

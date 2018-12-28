@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 
 name=libatomic-ops
-version=7.6.6
+version=7.6.8
 release=1
 
 source=(http://www.ivmaisoft.com/_bin/atomic_ops//libatomic_ops-$version.tar.gz)

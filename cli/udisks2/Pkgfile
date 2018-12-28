@@ -4,7 +4,7 @@
 # Depends on: gptfdisk acl libgudev expat libatasmart libblockdev libxslt polkit python-six gobject-introspection docbook-xsl
 
 name=udisks2
-version=2.8.0
+version=2.8.1
 release=1
 
 source=(https://github.com/storaged-project/udisks/releases/download/udisks-$version/udisks-$version.tar.bz2)
@@ -16,5 +16,6 @@ cd udisks-$version
 --localstatedir=/var \
 --disable-static 
 make
+sed -i -r 's/^ +\././' doc/man/*.[158]
 make DESTDIR=$PKG install
 }

@@ -1,0 +1,20 @@
+# Description: Tools for parsing and creating messages using the Multipurpose Internet Mail Extension
+# URL: http://spruce.sourceforge.net/gmime
+# Packager: tnut at nutyx dot org
+# Depends on: glib libgpg-error 
+
+name=gmime3
+version=3.2.3
+release=1
+source=(https://download.gnome.org/sources/gmime/${version%.*}/gmime-$version.tar.xz)
+
+
+build() {
+cd gmime-$version
+./configure --prefix=/usr \
+--mandir=/usr/share/man \
+--infodir=/usr/share/info \
+--disable-static
+make
+make DESTDIR=$PKG install
+}

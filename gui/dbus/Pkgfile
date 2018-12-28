@@ -8,7 +8,7 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B, Jayce"
 
 name=dbus
-version=1.12.10
+version=1.12.12
 release=1
 
 source=(http://dbus.freedesktop.org/releases/dbus/$name-$version.tar.gz \

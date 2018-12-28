@@ -1,0 +1,25 @@
+# Description: an asynchronous I/O facility, a richer API and capability set than the simple POSIX. 
+# URL: http://wiki.linuxfromscratch.org/blfs/wiki/libaio
+# Packager: tnut <tnut@nutyx.org>
+# Contributors="Pierre B
+run=()
+
+name=libaio
+version=0.3.111
+release=1
+source=(http://http.debian.net/debian/pool/main/liba/$name/${name}_${version}.orig.tar.gz)
+
+prepare() {
+echo "Fonction prepare sans objet"
+}
+
+build() {
+cd $SRC/$name-$version
+sed -i '/install.*libaio.a/s/^/#/' src/Makefile
+make
+}
+
+package() {
+cd $SRC/$name-$version
+make prefix=$PKG/usr install
+}

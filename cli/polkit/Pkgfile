@@ -4,15 +4,15 @@
 # Depends on: glib js52 gobject-introspection intltool libxslt docbook-xsl
 
 name=polkit
-version=0.114
+version=0.115
 release=1
 
-source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz)
+source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.gz
+		polkit-0.115-security_patch-2.patch)
 
 build() {
 cd $name-$version
-sed -e '/JS_ReportWarningUTF8/s/,/, "%s",/'  \
-        -i  src/polkitbackend/polkitbackendjsauthority.cpp
+patch -Np1 -i ../polkit-0.115-security_patch-2.patch
 ./configure --prefix=/usr                    \
             --sysconfdir=/etc                \
             --localstatedir=/var             \

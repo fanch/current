@@ -5,7 +5,7 @@ url="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"
 packager="tnut <tnut@nutyx.org>"
 
 name=ssh-askpass
-version=7.5p1
+version=7.9p1
 release=1
 source=($url/openssh-$version.tar.gz)
 

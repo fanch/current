@@ -4,7 +4,7 @@
 # Depends on: icu python
 
 name=boost
-version=1.68.0
+version=1.69.0
 release=1
 
 source=(https://dl.bintray.com/boostorg/release/$version/source/${name}_${version//./_}.tar.bz2)

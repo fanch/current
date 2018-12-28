@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 
 name=kerberos
-version=1.16.1
+version=1.16.2
 release=1
 
 source=(http://web.mit.edu/$name/dist/krb5/${version:0:4}/krb5-$version.tar.gz)

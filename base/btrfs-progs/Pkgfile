@@ -5,14 +5,12 @@
 # Depends on: lzo
 
 name=btrfs-progs
-version=4.17
+version=4.19.1
 release=1
 source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz)
 
 build(){
 cd $name-v$version
-
-sed -i '1,100 s/\.gz//g' Documentation/Makefile.in
 ./configure \
 --prefix=/usr \
 --libdir=/lib \

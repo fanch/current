@@ -4,7 +4,7 @@
 # Contributors: Pierre B
 
 name=iptables
-version=1.8.0
+version=1.8.2
 release=1
 source=(http://www.netfilter.org/projects/iptables/files/$name-$version.tar.bz2)
 
@@ -12,9 +12,6 @@ build() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 cd $name-$version
-sed -i -e '/libebt_/s/^/#/' \
-       -e '/libarpt_/s/^/#/' extensions/GNUmakefile.in
-
 ./configure --prefix=/usr      \
             --sbindir=/sbin    \
             --disable-nftables \

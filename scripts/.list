@@ -73,6 +73,7 @@ cpio
 pciutils
 lzo
 libarchive
+libiao
 lvm2
 wget
 rsync

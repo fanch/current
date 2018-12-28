@@ -6,15 +6,14 @@ packager="greg <greg@nutyx.org>"
 contributors="Fanch, tnut"
 
 name=valgrind
-version=3.13.0
-release=2
+version=3.14.0
+release=1
 
 source=(ftp://sourceware.org/pub/$name/$name-$version.tar.bz2)
 
 build() {
 	cd $name-$version
-	sed -i '1904s/4/5/' coregrind/m_syswrap/syswrap-linux.c
-	sed -i 's|/doc/valgrind||' docs/Makefile.in 
+	sed -i 's|/doc/valgrind||' docs/Makefile.in
 	./configure --prefix=/usr \
             --datadir=/usr/share/doc/$name-$version
             

@@ -4,13 +4,15 @@
 # Depends on: glib meson ninja 
 
 name=fribidi
-version=0.19.7
+version=1.0.5
 release=1
-source=(https://github.com/fribidi/fribidi/releases/download/0.19.7/fribidi-0.19.7.tar.bz2)
+source=(https://github.com/fribidi/fribidi/releases/download/v1.0.5/fribidi-1.0.5.tar.bz2)
 
 build() {
 	cd $name-$version
-	./configure --prefix=/usr
-	make
-	make DESTDIR=$PKG install
+	mkdir build 
+	cd build    
+meson --prefix=/usr ..
+ninja
+DESTDIR=$PKG ninja install
 }

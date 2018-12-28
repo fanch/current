@@ -3,7 +3,7 @@
 # Packager: tnut at nutyx dot org
 
 name=liblinear
-version=220
+version=221
 release=1
 
 source=( https://github.com/cjlin1/liblinear/archive/v$version/$name-$version.tar.gz)

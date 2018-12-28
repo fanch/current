@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 
 name=libgpg-error
-version=1.32
+version=1.33
 release=1
 
 source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)

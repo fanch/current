@@ -4,10 +4,10 @@
 # Depends on: nspr sqlite 
 
 name=nss
-version=3.39
+version=3.41
 release=1
 
-source=(http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz \
+source=(https://archive.mozilla.org/pub/security/nss/releases/NSS_${version//./_}_RTM/src/nss-$version.tar.gz \
 	    nss-$version-standalone-1.patch)
 
 build () {

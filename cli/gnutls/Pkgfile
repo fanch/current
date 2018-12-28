@@ -4,8 +4,8 @@
 # Depends on: libtasn1 libidn libunistring nettle p11-kit
 
 name=gnutls
-version=3.5.19
-release=2
+version=3.6.5
+release=1
 
 source=(ftp://ftp.gnutls.org/gcrypt/$name/v${version:0:3}/$name-$version.tar.xz)
 

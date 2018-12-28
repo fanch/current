@@ -3,10 +3,10 @@
 # Packager: tnut at nutyx dot org
 
 name=xapian
-version=1.4.5
+version=1.4.9
 release=1
 
-source=( http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
+source=(http://oligarchy.co.uk/xapian/$version/xapian-core-$version.tar.xz)
 build() {
 cd $name-core-$version
 ./configure --prefix=/usr \
