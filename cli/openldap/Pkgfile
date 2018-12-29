@@ -3,7 +3,7 @@
 # Packager: pierre at nutyx dot org
 
 name=openldap
-version=2.4.46
+version=2.4.47
 release=1
 
 source=(ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/$name-$version.tgz
@@ -20,5 +20,5 @@ autoconf
             --disable-slapd
 make depend
 make
-make DESTDIR=$PKG install   
+make DESTDIR=$PKG install  
 }

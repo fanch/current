@@ -10,7 +10,7 @@ PKGMK_GROUPS=()
 name=xorg-xbitmaps
 _name=xbitmaps
 alias=(xbitmaps)
-version=1.1.1
+version=1.1.2
 release=1
 
 source=(http://ftp.x.org/pub/individual//data/${_name}-$version.tar.bz2)

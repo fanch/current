@@ -6,7 +6,7 @@
 PKGMK_GROUPS=(lib doc man devel service)
 
 name=postgresql
-version=10.5
+version=11.1
 release=1
 
 source=( http://ftp.postgresql.org/pub/source/v$version/$name-$version.tar.bz2)
