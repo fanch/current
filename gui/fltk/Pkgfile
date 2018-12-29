@@ -6,10 +6,10 @@ packager="tnut <tnut@nutyx.org>"
 contributors="Pierre B"
 
 name=fltk
-version=1.3.4.1
+version=1.3.4.2
 release=2
 
-source=(http://fltk.org/pub/fltk/1.3.4/fltk-1.3.4-1-source.tar.gz)
+source=(http://fltk.org/pub/fltk/1.3.4/fltk-1.3.4-2-source.tar.gz)
 build() {
 cd fltk-*
 
