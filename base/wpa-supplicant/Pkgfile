@@ -2,13 +2,12 @@
 # URL: http://hostap.epitest.fi/wpa_supplicant
 # Packager: tnut tnut@nutyx.org>
 # Contributors: Pierre B, tnut, greg
-# Depends on: libnl
+# Depends on: libnl 
 
 name=wpa-supplicant
-version=2.6
-release=3
-source=(wpa_supplicant-$version-upstream_fixes-1.patch
-	http://hostap.epitest.fi/releases/wpa_supplicant-$version.tar.gz)
+version=2.7
+release=1
+source=(http://hostap.epitest.fi/releases/wpa_supplicant-$version.tar.gz)
 
 build() {
 cd wpa_supplicant-$version
@@ -31,8 +30,8 @@ CONFIG_EAP_PEAP=y
 CONFIG_EAP_TLS=y
 CONFIG_EAP_TTLS=y
 CONFIG_IEEE8021X_EAPOL=y
-CONFIG_LIBNL32=y
 CONFIG_IPV6=y
+CONFIG_LIBNL32=y
 CONFIG_PEERKEY=y
 CONFIG_PKCS12=y
 CONFIG_READLINE=y
@@ -40,12 +39,12 @@ CONFIG_SMARTCARD=y
 CONFIG_WPS=y
 CFLAGS += -I/usr/include/libnl3
 EOF
-patch -p1 -i ../wpa_supplicant-$version-upstream_fixes-1.patch
 
 cd wpa_supplicant 
 make BINDIR=/sbin LIBDIR=/lib
+
 mkdir -p $PKG/{etc,sbin,usr/share/man/man{5,8}}
 install -v -m755 wpa_{cli,passphrase,supplicant} $PKG/sbin
 install -v -m644 doc/docbook/wpa_supplicant.conf.5 $PKG/usr/share/man/man5
-install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 $PKG/usr/share/man/man8
+install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 $PKG/usr/share/man/man8                              
 }

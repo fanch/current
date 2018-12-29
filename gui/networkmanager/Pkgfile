@@ -10,7 +10,7 @@ alias=(NetworkManager)
 _name=NetworkManager
 
 name=networkmanager
-version=1.12.2
+version=1.14.4
 release=1
 
 run=(wpa-supplicant wpa-supplicant-dbus)
@@ -21,32 +21,52 @@ build() {
 source /etc/blfs-bootscripts
 wget http://www.linuxfromscratch.org/blfs/downloads/svn/$scripts-$scriptsversion.tar.bz2
 cd ${_name}-$version
-sed -i 's/1,12,2/1,12.2/' libnm-core/nm-version.h    
-./configure --prefix=/usr \
---sysconfdir=/etc \
---localstatedir=/var \
---with-nmtui \
---with-libnm-glib \
---enable-introspection \
---enable-gtk-doc \
---docdir=/usr/share/doc/networkmanager-$version \
---with-systemdsystemunitdir=no \
---disable-json-validation \
---disable-ovs \
---disable-ppp \
---docdir=/usr/share/doc/$name-$version
-make
-make DESTDIR=$PKG install
 
-# create a VPN directory
-install -d $PKG/etc/$_name/VPN
-install -m755 clients/.libs/nm-online -D $PKG/usr/bin/nm-online
-# create keyfile plugin system-settings directory
-install -d $PKG/etc/$_name/system-connections
+sed '/initrd/d' -i src/meson.build
+mkdir build 
+cd build    
+
+CXXFLAGS+="-O2 -fPIC"            \
+meson --prefix /usr              \
+      --sysconfdir /etc          \
+      --localstatedir /var       \
+      -Djson_validation=false    \
+      -Dlibaudit=no              \
+      -Dlibnm_glib=true          \
+      -Dlibpsl=false             \
+      -Dnmtui=true               \
+      -Dovs=false                \
+      -Dppp=false                \
+      -Dselinux=false            \
+      -Dudev_dir=/lib/udev       \
+      -Dsession_tracking=no      \
+      -Dmodem_manager=false      \
+      -Dsystemdsystemunitdir=no  \
+      -Dsystemd_journal=false    \
+      -Dqt=false                 \
+      .. 
+ninja
+DESTDIR=$PKG ninja install
+mv -v $PKG/usr/share/doc/NetworkManager{,-1.14.4}
 
 cat >> $PKG/etc/NetworkManager/NetworkManager.conf << "EOF"
 [main]
 plugins=keyfile
+EOF
+
+cat > $PKG/etc/NetworkManager/conf.d/polkit.conf << "EOF"
+[main]
+auth-polkit=true
+EOF
+
+cat > $PKG/etc/NetworkManager/conf.d/dhcp.conf << "EOF"
+[main]
+dhcp=dhclient
+EOF
+
+cat > $PKG/etc/NetworkManager/conf.d/no-dns-update.conf << "EOF"
+[main]
+dns=none
 EOF
 
 mkdir -p $PKG/usr/share/polkit-1/rules.d
