@@ -21,7 +21,8 @@ build() {
               --with-system-nspr  \
               --with-system-icu   \
               --disable-jemalloc  \
-              --enable-readline
+              --enable-readline   \
+              --enable-debug
   make
   make DESTDIR=$PKG install
   # Already present on js38
