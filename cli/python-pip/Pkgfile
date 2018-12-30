@@ -6,16 +6,18 @@
  
 name=python-pip
 version=9.0.3
-release=1
+release=3
 
 source=(https://pypi.io/packages/source/p/pip/pip-$version.tar.gz)
 
 build() {
     cd pip-$version
+    python2 setup.py build
     python2 setup.py install --prefix=/usr --root=$PKG
-    mkdir -p $PKG/usr/share/doc/$name-$version
-    cp -Rf docs/* $PKG/usr/share/doc/$name-$version 
+    python3 setup.py build
+    python3 setup.py install --prefix=/usr --root=$PKG
 }
+
 
 
 
