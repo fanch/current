@@ -169,7 +169,7 @@ https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/wireless_tools-29-fix_iwlist_scanning-1.patch
 http://www.linuxfromscratch.org/patches/blfs/svn/wpa_supplicant-2.6-upstream_fixes-1.patch
 http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
-https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.17.0.tar.xz
+https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.19.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20180105.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/svn/openssh-7.7p1-openssl-1.1.0-1.patch
 https://github.com/djlucas/make-ca/releases/download/v1.0/make-ca-1.0.tar.xz
