@@ -6,18 +6,20 @@ Origin: Self
 Description: Remove programs superceeded by other packages: wall, mountpoint, 
              last, lastb, mesg, sulogin, and utmpdump.
 
-diff -Naur sysvinit-2.90.orig/src/Makefile sysvinit-2.90/src/Makefile
---- sysvinit-2.90.orig/src/Makefile	2018-06-18 18:25:26.000000000 -0500
-+++ sysvinit-2.90/src/Makefile	2018-06-25 11:30:12.281123097 -0500
+Rediffed for vsrsion 2.93.  Also remove readbootlog.
+
+diff -Naur sysvinit-2.93/src/Makefile sysvinit-2.93.new/src/Makefile
+--- sysvinit-2.93/src/Makefile	2018-11-24 10:38:12.000000000 -0600
++++ sysvinit-2.93.new/src/Makefile	2018-11-24 11:30:37.483077795 -0600
 @@ -24,18 +24,21 @@
  # For some known distributions we do not build all programs, otherwise we do.
  BIN	=
  SBIN	= init halt shutdown runlevel killall5 fstab-decode
--USRBIN	= last mesg
-+#USRBIN	= last mesg
+-USRBIN	= last mesg readbootlog
++#USRBIN	= last mesg readbootlog
  
--MAN1	= last.1 lastb.1 mesg.1
-+#MAN1	= last.1 lastb.1 mesg.1
+-MAN1	= last.1 lastb.1 mesg.1 readbootlog.1
++#MAN1	= last.1 lastb.1 mesg.1 readbootlog.1
  MAN5	= initscript.5 inittab.5 initctl.5
 -MAN8	= halt.8 init.8 killall5.8 pidof.8 poweroff.8 reboot.8 runlevel.8
 +#MAN8	= halt.8 init.8 killall5.8 pidof.8 poweroff.8 reboot.8 runlevel.8
@@ -38,7 +40,7 @@ diff -Naur sysvinit-2.90.orig/src/Makefile sysvinit-2.90/src/Makefile
  endif
  
  ifeq ($(DISTRO),Debian)
-@@ -192,10 +195,10 @@
+@@ -197,10 +200,10 @@
  		ln -sf halt $(ROOT)/sbin/reboot
  		ln -sf halt $(ROOT)/sbin/poweroff
  		ln -sf init $(ROOT)/sbin/telinit
@@ -53,7 +55,7 @@ diff -Naur sysvinit-2.90.orig/src/Makefile sysvinit-2.90/src/Makefile
  		$(INSTALL_DIR) $(ROOT)/usr/include/
  		$(INSTALL_DATA) initreq.h $(ROOT)/usr/include/
  		$(INSTALL_DIR) $(ROOT)$(MANDIR)/man1/
-@@ -213,12 +216,12 @@
+@@ -218,12 +221,12 @@
  			$(INSTALL_DATA) ../man/$$man $(ROOT)$(MANDIR)/man8/; \
  			sed -i "1{ $(MANDB); }" $(ROOT)$(MANDIR)/man8/$$man ; \
  		done
