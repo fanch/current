@@ -27,7 +27,7 @@ extended = true
 
 [install]
 prefix = "/usr"
-docdir = "share/doc/rustc-1.29.1"
+docdir = "share/doc/rustc-1.29.2"
 
 [rust]
 channel = "stable"
