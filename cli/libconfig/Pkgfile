@@ -12,7 +12,7 @@ release=1
 source=()
 
 build() {
-git clone git://github.com/hyperrealm/libconfig.git $name
+git clone https://github.com/hyperrealm/libconfig.git $name
 cd $name
  autoreconf -vi
 ./configure --prefix=/usr
