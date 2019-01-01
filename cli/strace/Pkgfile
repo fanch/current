@@ -4,7 +4,7 @@
 # Depends on: libunwind 
 
 name=strace
-version=4.24
+version=4.26
 release=1
 
 source=(https://github.com/strace/strace/releases/download/v$version/strace-$version.tar.xz)
