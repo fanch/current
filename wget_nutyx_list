@@ -43,7 +43,7 @@ https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.26.t
 ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
 http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.0.tar.gz
 http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz
-https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.11.tar.xz
+https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.13.tar.xz
 http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
 http://ftp.gnu.org/gnu/make/make-4.2.1.tar.bz2
 http://download.savannah.gnu.org/releases/man-db/man-db-2.8.4.tar.xz
@@ -108,10 +108,10 @@ https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.20.1.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-manpages-2.20.1.tar.xz
 http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
 http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
-http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.11.xz
+http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.13.xz
 http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.89.xz
-http://download.virtualbox.org/virtualbox/5.2.22/VirtualBox-5.2.22-126460-Linux_amd64.run
+http://download.virtualbox.org/virtualbox/6.0.0/VirtualBox-6.0.0-127566-Linux_amd64.run
 http://people.redhat.com/~dhowells/keyutils/keyutils-1.6.tar.bz2
 http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 http://www.thrysoee.dk/editline/libedit-20170329-3.1.tar.gz
