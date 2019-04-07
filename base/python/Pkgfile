@@ -9,7 +9,7 @@ contributors="Alienus"
 packager="tnut <tnut@nutyx.org>"
 
 name=python
-version=3.7.1
+version=3.7.3
 release=1
 alias=(python3 Python)
 source=(http://www.python.org/ftp/python/$version/Python-$version.tar.xz
@@ -71,5 +71,4 @@ usr/share/applications/$name.desktop \
 usr/share/icons/hicolor/16x16/apps/$name.png
 
 rm -r usr/share/{doc,applications/$name.desktop,icons/hicolor/16x16/apps/$name.png}
-
 }

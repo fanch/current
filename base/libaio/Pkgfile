@@ -5,9 +5,9 @@
 run=()
 
 name=libaio
-version=0.3.111
+version=0.3.112
 release=1
-source=(http://http.debian.net/debian/pool/main/liba/$name/${name}_${version}.orig.tar.gz)
+source=(http://http.debian.net/debian/pool/main/liba/$name/${name}_${version}.orig.tar.xz)
 
 prepare() {
 echo "Fonction prepare sans objet"

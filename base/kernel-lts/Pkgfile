@@ -17,8 +17,8 @@ release=1
 run=(nutyx)
 
 # Virtualbox
-vb_version=6.0.0
-buildrelease=127566
+vb_version=6.0.4
+buildrelease=128413
 _VBARCH=amd64
 
 ## Download all the sources

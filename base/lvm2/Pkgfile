@@ -5,7 +5,7 @@
 # Depends on: libaio
 
 name=lvm2
-version=2.03.01
+version=2.03.02
 release=1
 source=(ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz)
 
@@ -16,8 +16,6 @@ PATH=$PATH:/sbin:/usr/sbin
 ./configure \
 --prefix=/usr \
 --exec-prefix= \
---with-confdir=/etc \
---mandir=/usr/share/man \
 --enable-applib \
 --enable-cmdlib \
 --enable-pkgconfig \

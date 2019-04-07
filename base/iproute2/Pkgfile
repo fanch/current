@@ -4,7 +4,7 @@ url="https://www.kernel.org/pub/linux/utils/net/iproute2/"
 description="Programs for basic and advanced network routing."
 
 name=iproute2
-version=4.19.0
+version=5.0.0
 release=1
 PKGMK_GROUPS=(devel man doc)
 
@@ -14,10 +14,10 @@ build()
 {
 cd iproute2-$version
 sed -i /ARPD/d Makefile
-sed -i 's/arpd.8//' man/man8/Makefile
+rm -fv man/man8/arpd.8
 
 # disable building one module that requires iptables
-sed -i 's/m_ipt.o//' tc/Makefile
+sed -i 's/.m_ipt.o//' tc/Makefile
 
 make MANDIR=/usr/share/man INFODIR=/usr/share/info \
 	DESTDIR=$PKG 

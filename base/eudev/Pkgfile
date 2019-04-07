@@ -11,7 +11,6 @@ source=(http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.bz2
 
 build() {
 cd $name-$version
-sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
 
 if [ -d /tools ];then
 	cat > config.cache << "EOF"

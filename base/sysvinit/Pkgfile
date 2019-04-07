@@ -5,14 +5,14 @@
 # Packager: tnut <tnut@nutyx.org>
 
 name=sysvinit
-version=2.93
+version=2.94
 release=1
 source=(http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-$version.tar.xz
-	$name-$version-consolidated-1.patch)
+	$name-$version-consolidated-4.patch)
 
 build() {
 cd $name-$version
-patch -Np1 -i ../$name-$version-consolidated-1.patch
+patch -Np1 -i ../$name-$version-consolidated-4.patch
 
 make -C src
 mkdir -pv $PKG/{sbin,bin,usr/{bin,include,share/man/man{1,5,8}}}

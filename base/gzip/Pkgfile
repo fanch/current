@@ -5,7 +5,7 @@
 # Packager: tnut <tnut@nutyx.org>
 
 name=gzip
-version=1.9
+version=1.10
 release=1
 source=(http://ftp.gnu.org/gnu/gzip/gzip-$version.tar.xz)
 

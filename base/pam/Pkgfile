@@ -3,18 +3,19 @@
 # Packager: tnut <tnut@nutyx.org>
 
 name=pam
-version=1.3.0
+version=1.3.1
 release=1
-source=(http://linux-pam.org/library/Linux-PAM-$version.tar.bz2)
+source=(http://linux-pam.org/library/Linux-PAM-$version.tar.xz)
 
 build() {
 mkdir -p $PKG/etc/pam.d
 cd Linux-PAM-$version
 
 ./configure --prefix=/usr --sysconfdir=/etc \
+--libdir=/usr/lib \
 --enable-securedir=/lib/security \
 --docdir=/usr/share/doc/Linux-PAM-$version \
---disable-nis --libdir=/usr/lib
+--disable-nis 
 make
 make DESTDIR=$PKG install
 

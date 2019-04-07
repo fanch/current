@@ -5,7 +5,7 @@ contributors="Pierre B"
 packager="tnut <tnut@nutyx.org>"
 
 name=tar
-version=1.30
+version=1.32
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
@@ -13,7 +13,10 @@ build()
 {
 cd $name-$version
 
-FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --bindir=/bin --libexecdir=/sbin
+FORCE_UNSAFE_CONFIGURE=1 \
+./configure --prefix=/usr \
+            --bindir=/bin \
+            --libexecdir=/sbin
 
 make
 make DESTDIR=$PKG install

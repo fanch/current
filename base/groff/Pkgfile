@@ -5,7 +5,7 @@
 # Contributors: Pierre B
 
 name=groff
-version=1.22.3
+version=1.22.4
 release=1
 source=(http://ftp.gnu.org/gnu/groff/groff-$version.tar.gz)
 
