@@ -11,6 +11,7 @@ source=(http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.bz2
 
 build() {
 cd $name-$version
+sed -r -i 's|/usr(/bin/test)|\1|' test/udev-test.pl
 
 if [ -d /tools ];then
 	cat > config.cache << "EOF"
@@ -59,4 +60,3 @@ if [ -d /tools ];then
 else
  $PKG/sbin/udevadm hwdb --update --root=$PKG
 fi
-}

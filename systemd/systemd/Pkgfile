@@ -1,54 +1,83 @@
-# Depends on: intltool perl-xml-parser dbus polkit ca-certificates elfutils gnutls iptables libgcrypt libidn libxkbcommon python3 valgrind meson
+# Depends on: meson ninja
 
-description="system and service manager"
-url="http://www.freedesktop.org/wiki/Software/systemd"
-
-packager="tnut at nutyx dot org"
+description="Init system to control boot, execution and halt of a linux system"
+url="http://www.freedesktop.org/wiki/Software/systemd/"
+packager="tnut <tnut@nutyx.org>"
+maintainer="tnut <tnut@nutyx.org>"
 
 name=systemd
-version=239
+version=241
 release=1
 
-PKGMK_GROUPS=(devel doc man lib)
-#PKGMK_KEEP_SOURCES="no"
-source=(https://github.com/systemd/systemd/archive/v$version/$name-$version.tar.gz
-		systemd-239-glibc_statx_fix-1.patch)
+source=(https://github.com/systemd/systemd/archive/v241/$name-$version.tar.gz)
 
-build() {
-
+build () {
 cd $name-$version
+ln -sf /tools/bin/true /usr/bin/xsltproc
 
-patch -Np1 -i ../systemd-239-glibc_statx_fix-1.patch
-
+sed '177,$ d' -i src/resolve/meson.build
 sed -i 's/GROUP="render", //' rules/50-udev-default.rules.in
 
-mkdir build 
-cd    build 
+for file in /tools/lib/lib{blkid,mount,uuid}*; do
+    ln -sf $file /usr/lib/
+done
 
-meson --prefix=/usr         \
-      --sysconfdir=/etc     \
-      --localstatedir=/var  \
-      -Dblkid=true          \
-      -Dbuildtype=release   \
-      -Ddefault-dnssec=no   \
-      -Dfirstboot=false     \
-      -Dinstall-tests=false \
-      -Dldconfig=false      \
-      -Drootprefix=         \
-      -Drootlibdir=/lib     \
-      -Dsplit-usr=true      \
-      -Dsysusers=false      \
-      -Db_lto=false         \
-      ..                  
-ninja
+mkdir -p build
+cd       build
 
-DESTDIR=$PKG ninja install
+PKG_CONFIG_PATH="/usr/lib/pkgconfig:/tools/lib/pkgconfig" \
+LANG=en_US.UTF-8                   \
+meson --prefix=/usr                \
+      --sysconfdir=/etc            \
+      --localstatedir=/var         \
+      -Dblkid=true                 \
+      -Dbuildtype=release          \
+      -Ddefault-dnssec=no          \
+      -Dfirstboot=false            \
+      -Dinstall-tests=false        \
+      -Dkill-path=/bin/kill        \
+      -Dkmod-path=/bin/kmod        \
+      -Dldconfig=false             \
+      -Dmount-path=/bin/mount      \
+      -Drootprefix=                \
+      -Drootlibdir=/lib            \
+      -Dsplit-usr=true             \
+      -Dsulogin-path=/sbin/sulogin \
+      -Dsysusers=false             \
+      -Dumount-path=/bin/umount    \
+      -Db_lto=false                \
+      ..
+
+LANG=en_US.UTF-8 ninja
+DESTDIR=$PKG LANG="en_US.UTF-8" ninja install
 
 rm -rfv $PKG/usr/lib/rpm
+rm -f /usr/bin/xsltproc
 
-for tool in runlevel reboot shutdown poweroff halt telinit; do
-     ln -sfv ../bin/systemctl $PKG/sbin/${tool}
-done
-ln -sfv ../lib/systemd/systemd $PKG/sbin/init
+cat > $PKG/lib/systemd/systemd-user-sessions << "EOF"
+#!/bin/bash
+rm -f /run/nologin
+EOF
+chmod 755 $PKG/lib/systemd/systemd-user-sessions
 
+rm $PKG/usr/lib/tmpfiles.d/home.conf
+
+cat > $PKG/etc/pam.d/systemd-user << "EOF"
+# Begin /etc/pam.d/systemd-user
+
+account  required pam_access.so
+account  include  system-account
+
+session  required pam_env.so
+session  required pam_limits.so
+session  required pam_unix.so
+session  required pam_loginuid.so
+session  optional pam_keyinit.so force revoke
+session  optional systemd.so
+
+auth     required pam_deny.so
+password required pam_deny.so
+
+# End /etc/pam.d/systemd-user
+EOF
 }

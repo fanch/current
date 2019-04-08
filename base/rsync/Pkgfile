@@ -19,6 +19,7 @@ make
 make DESTDIR=$PKG install
 
 # drivers
+
 mkdir -p $PKG/var/lib/pkg/drivers
 install -m 755 $SRC/rsync.driver \
 $PKG/var/lib/pkg/drivers/rsync

@@ -4,7 +4,7 @@ build()
 {
 cd perl-$version
 
-sh Configure -des -Dprefix=/tools -Dlibs=-lm
+sh Configure -des -Dprefix=/tools -Dlibs=-lm -Uloclibpth -Ulocincpth
 
 make
 

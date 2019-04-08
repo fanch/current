@@ -91,7 +91,7 @@ https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v4.
 http://downloads.nutyx.org/files/nutyx-8.2.92.tar.gz
 http://downloads.nutyx.org/files/cards-2.1.104.tar.gz
 http://ftp.gnu.org/gnu/cpio/cpio-2.12.tar.bz2
-http://curl.haxx.se/download/curl-7.62.0.tar.xz
+http://curl.haxx.se/download/curl-7.64.1.tar.xz
 https://roy.marples.name/downloads/dhcpcd/dhcpcd-7.0.8.tar.xz
 ftp://ftp.us.debian.org/debian/pool/main/d/dialog/dialog_1.3-20190211.orig.tar.gz
 http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.1.tar.gz
@@ -148,7 +148,7 @@ https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/wireless_tools-29-fix_iwlist_scanning-1.patch
 http://www.linuxfromscratch.org/patches/blfs/svn/wpa_supplicant-2.6-upstream_fixes-1.patch
 http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
-https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.18.0.tar.xz
+https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.19.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20190313.tar.xz
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-systemd-units-20180105.tar.bz2
 http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-20170514
@@ -163,8 +163,8 @@ http://www.linuxfromscratch.org/patches/blfs/svn/httpd-2.4.34-blfs_layout-1.patc
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 https://archive.apache.org/dist/apr/apr-1.6.5.tar.bz2
 https://ftp.pcre.org/pub/pcre/pcre-8.42.tar.bz2
-https://sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
-https://sqlite.org/2018/sqlite-doc-3260000.zip
+https://sqlite.org/2018/sqlite-autoconf-3270200.tar.gz
+https://sqlite.org/2018/sqlite-doc-3270200.zip
 ftp://xmlsoft.org/libxml2/libxml2-2.9.9.tar.gz
 http://isl.gforge.inria.fr/isl-0.20.tar.xz
 http://jfs.sourceforge.net/project/pub/jfsutils-1.1.15.tar.gz
