@@ -17,8 +17,6 @@ cd build
 
 make
 
-rm -rf /tools/share/info/dir
-
 make install
 
 echo 'main(){}' > dummy.c

@@ -107,7 +107,7 @@ https://www.kernel.org/pub/software/scm/git/git-manpages-2.20.1.tar.xz
 https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/gnutls-3.5.19.tar.xz
 http://www.nico.schottelius.org/software/gpm/archives/gpm-1.20.7.tar.bz2
 http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
-http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.19.xz
+http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.34.xz
 http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.79.xz
 http://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-Linux_amd64.run
@@ -115,8 +115,8 @@ http://people.redhat.com/~dhowells/keyutils/keyutils-1.6.tar.bz2
 http://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz
 http://www.thrysoee.dk/editline/libedit-20180525-3.1.tar.gz
 https://github.com/thom311/libnl/releases/download/libnl$(echo 3.4.0|sed 's/\./_/g')/libnl-3.4.0.tar.gz
-http://downloads.sourceforge.net/libpng/libpng-1.6.35.tar.xz 
-http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.35-apng.patch.gz
+http://downloads.sourceforge.net/libpng/libpng-1.6.36.tar.xz 
+http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-1.6.36-apng.patch.gz
 http://downloads.sourceforge.net/libtirpc/libtirpc-1.1.4.tar.bz2
 http://sourceforge.net/projects/lsb/files/lsb_release/1.4/lsb-release-1.4.tar.gz
 ftp://sources.redhat.com/pub/lvm2/LVM2.2.03.02.tgz
@@ -146,8 +146,7 @@ http://www.sudo.ws/sudo/dist/sudo-1.8.26.tar.gz
 http://ftp.gnu.org/gnu/wget/wget-1.20.tar.gz
 https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/wireless_tools-29-fix_iwlist_scanning-1.patch
-http://www.linuxfromscratch.org/patches/blfs/svn/wpa_supplicant-2.6-upstream_fixes-1.patch
-http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
+http://hostap.epitest.fi/releases/wpa_supplicant-2.7.tar.gz
 https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.19.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20190313.tar.xz
 http://www.linuxfromscratch.org/blfs/downloads/svn/blfs-systemd-units-20180105.tar.bz2
@@ -155,7 +154,7 @@ http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-20170514
 https://hg.mozilla.org/mozilla-central/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt 
 http://www.cacert.org/certs/class3.crt
-http://www.netfilter.org/projects/iptables/files/iptables-1.8.0.tar.bz2
+http://www.netfilter.org/projects/iptables/files/iptables-1.8.2.tar.bz2
 https://github.com/thom311/libnl/releases/download/libnl3_4_0/libnl-3.4.0.tar.gz
 https://github.com/thom311/libnl/releases/download/libnl3_4_0/libnl-doc-3.4.0.tar.gz
 https://archive.apache.org/dist/httpd/httpd-2.4.37.tar.bz2
@@ -198,7 +197,7 @@ http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz
 http://www.cpan.org/authors/id/E/EX/EXIFTOOL/Image-ExifTool-11.11.tar.gz
 http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/inc-latest-0.500.tar.gz
 http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/IO-Socket-INET6-2.72.tar.gz
-http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
+http://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.060.tar.gz
 http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IO-Tty-1.12.tar.gz
 http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/IPC-Run-20180523.0.tar.gz
 http://search.cpan.org/CPAN/authors/id/P/PJ/PJF/IPC-System-Simple-1.25.tar.gz
