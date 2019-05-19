@@ -1,0 +1,15 @@
+name=grep
+version=3.1
+source=(http://ftp.gnu.org/gnu/grep/grep-$version.tar.xz\
+	)
+build()
+{
+cd grep-$version
+./configure \
+		--prefix=/tools \
+		--build=${CLFS_HOST} \
+		--host=${CLFS_TARGET} \
+		--without-included-regex
+	make
+	make install
+}

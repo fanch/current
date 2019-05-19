@@ -1,0 +1,10 @@
+name=cross-m4
+version=1.4.18
+source=(http://ftp.gnu.org/gnu/m4/m4-$version.tar.xz)
+build() {
+cd m4-$version
+./configure  \
+   --prefix=/cross-tools
+make
+make install
+}

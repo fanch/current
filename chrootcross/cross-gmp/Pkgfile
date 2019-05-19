@@ -1,0 +1,12 @@
+name=cross-gmp
+version=6.1.2
+source=(http://ftp.gnu.org/gnu/gmp/gmp-$version.tar.xz)
+build() {
+cd gmp-${version/a//}
+./configure  \
+   --prefix=/cross-tools \
+   --enable-cxx   \
+   --disable-static
+make
+make install
+}

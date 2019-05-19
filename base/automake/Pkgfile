@@ -8,10 +8,9 @@ release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build() {
-cd automake-$version
-./configure --prefix=/usr \
---docdir=$PKG/usr/share/doc/automake-$version
-make
-make prefix=$PKG/usr install
-rm -rf $PKG/usr/share/info/dir
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/{{info,doc},aclocal/README}
 }

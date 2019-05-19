@@ -1,0 +1,13 @@
+name=cross-mpfr
+version=4.0.1
+source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.xz)
+build() {
+cd mpfr-$version
+LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
+	./configure \
+		--prefix=/cross-tools \
+		--disable-static \
+		--with-gmp=/cross-tools
+	make
+	make install
+}

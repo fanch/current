@@ -1,0 +1,16 @@
+name=cross-mpc
+version=1.1.0
+
+source=(http://www.multiprecision.org/mpc/download/mpc-$version.tar.gz )
+
+build() {
+cd mpc-$version
+LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
+	./configure \
+		--prefix=/cross-tools \
+		--disable-static \
+		--with-gmp=/cross-tools \
+		--with-mpfr=/cross-tools
+	make
+	make install
+}

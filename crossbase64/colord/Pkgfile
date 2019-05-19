@@ -1,0 +1,30 @@
+# description	: System activated daemon that maps devices to color profiles
+# depends	: dbus glib lcms2 sqlite libgudev libgusb polkit
+# makedepends	: gobject-introspection vala meson
+
+name=colord
+version=1.4.2
+release=1
+source=(http://www.freedesktop.org/software/colord/releases/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	
+	mkdir build
+	cd    build
+	
+	meson --prefix=/usr                   \
+	      --sysconfdir=/etc               \
+	      --localstatedir=/var            \
+	      --libdir=/usr/lib64             \
+	      -Dwith-daemon-user=colord       \
+	      -Denable-vala=true              \
+	      -Denable-systemd=false          \
+	      -Denable-libcolordcompat=true   \
+	      -Denable-argyllcms-sensor=false \
+	      -Denable-bash-completion=false  \
+	      -Denable-docs=false             \
+	      -Denable-man=false ..
+	ninja
+	DESTDIR=$PKG ninja install
+}

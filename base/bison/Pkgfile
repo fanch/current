@@ -11,8 +11,7 @@ PKGMK_GROUPS=(man locale)
 
 build() {
 cd bison-$version
-./configure --prefix=/usr \
---docdir=/usr/share/doc/$name-$version
+./configure --prefix=/usr --disable-nls
 make
 make check||true
 make DESTDIR=$PKG install

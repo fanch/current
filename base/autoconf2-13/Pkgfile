@@ -6,16 +6,16 @@
 name=autoconf2-13
 version=2.13
 release=1
-source=(http://ftpmirror.gnu.org/autoconf/autoconf-$version.tar.gz)
+source=(http://ftpmirror.gnu.org/autoconf/autoconf-$version.tar.gz
+		autoconf-$version-consolidated_fixes-1.patch)
 
 build() {
   cd $SRC/autoconf-$version
-  ./configure --prefix=/usr \
-              --infodir=/usr/share/info \
-              --program-suffix=-2.13
-  make
-  make prefix="$PKG/usr" infodir="$PKG/usr/share/info" install
-
-  mv $PKG/usr/share/info/autoconf{,-2.13}.info
-  mv $PKG/usr/share/info/standards{,-2.13}.info
+  patch -Np1 -i ../autoconf-$version-consolidated_fixes-1.patch
+	mv -v autoconf.texi autoconf213.texi
+	rm -v autoconf.info
+	./configure --prefix=/usr --program-suffix=2.13
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/share/info
 }

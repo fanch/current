@@ -1,0 +1,10 @@
+name=pkg-config-lite
+version=0.28-1
+source=(http://sourceforge.net/projects/pkgconfiglite/files/$version/pkg-config-lite-$version.tar.gz)
+build() {
+cd $name-$version
+./configure \
+		--prefix=/cross-tools
+	make
+	make install
+}

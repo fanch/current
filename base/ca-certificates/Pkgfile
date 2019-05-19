@@ -10,18 +10,20 @@ source=(http://anduin.linuxfromscratch.org/BLFS/other/make-ca.sh-$version
 	http://anduin.linuxfromscratch.org/BLFS/other/certdata.txt
 	http://www.cacert.org/certs/root.crt)
 
-build() {
+build() {	
+	install -d $PKG/{usr/sbin,etc/ssl/local}
+	cp certdata.txt $PKG/etc/ssl/
+	openssl x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root" \
+	        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+	        > $PKG/etc/ssl/local/CAcert_Class_1_root.pem
+	openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root" \
+	        -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
+	        > $PKG/etc/ssl/local/CAcert_Class_3_root.pem
 
-install -vdm755 $PKG/{usr/sbin,etc/ssl/local}
+	cp certdata.txt $PKG/etc/ssl
+	install -vm755 make-ca.sh-$version $PKG/usr/sbin/make-ca
 
-OPENSSL="`which openssl`"
+	$PKG/usr/sbin/make-ca -D $PKG
 
-$OPENSSL x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root" \
-   -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning \
-   > $PKG/etc/ssl/local/CAcert_Class_1_root.pem
-
-cp certdata.txt $PKG/etc/ssl
-install -vm755 make-ca.sh-$version $PKG/usr/sbin/make-ca.sh
-
-$PKG/usr/sbin/make-ca.sh -D $PKG
+	ln -sv /etc/ssl/ca-bundle.crt $PKG/etc/ssl/certs/ca-certificates.crt
 }

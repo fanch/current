@@ -1,4 +1,4 @@
-version=2.29
+version=2.28
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.xz)
 
 build()
@@ -13,9 +13,13 @@ cd build
       --host=$LFS_TARGET                 \
       --build=$(../scripts/config.guess) \
       --enable-kernel=3.2                \
-      --with-headers=/tools/include      
+      --with-headers=/tools/include      \
+      libc_cv_forced_unwind=yes          \
+      libc_cv_c_cleanup=yes
 
 make
+
+rm -rf /tools/share/info/dir
 
 make install
 

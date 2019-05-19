@@ -1,0 +1,24 @@
+version=2.32
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz)
+
+build()
+{
+cd binutils-$version
+
+mkdir -v build
+cd build
+../configure \
+    --prefix=/tools            \
+    --with-sysroot=$LFS        \
+     --with-lib-path=/tools/lib:/tools/lib32 \
+    --target=$LFS_TARGET       \
+    --enable-multilib 			\
+    --disable-nls              \
+    --disable-werror
+	make
+	case $(uname -m) in
+		x86_64) mkdir -v /tools/lib && ln -sv lib /tools/lib64 ;;
+	esac
+	mkdir -v /tools/lib32
+	make install
+}

@@ -16,8 +16,12 @@ patch -Np1 -i ../$name-$version-i18n-1.patch
 sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk
 
 autoreconf -fiv
-FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr \
---enable-no-install-program=kill,uptime
+	FORCE_UNSAFE_CONFIGURE=1 \
+	./configure \
+		--prefix=/usr \
+		--libexecdir=/usr/lib \
+		--enable-no-install-program=kill,uptime \
+		--disable-nls
 
 FORCE_UNSAFE_CONFIGURE=1 make || FORCE_UNSAFE_CONFIGURE=1 make -j1
 if [ -f /tools/bin/su ];then

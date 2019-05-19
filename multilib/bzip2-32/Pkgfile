@@ -1,0 +1,32 @@
+# description	: Programs for compressing and decompressing files (32bit)
+# URL	: https://sources.redhat.com/bzip2
+# depends	: bzip2
+
+name=bzip2-32
+version=1.0.6
+release=1
+source=(http://anduin.linuxfromscratch.org/LFS/bzip2-$version.tar.gz
+	bzip2-$version-install_docs-1.patch)
+
+
+build() {
+	cd bzip2-$version
+
+	patch -Np1 -i ../bzip2-$version-install_docs-1.patch
+
+	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+	sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
+
+	# use our optimization
+	[ -n ${CFLAGS} ] && sed -i "s|-O2|${CFLAGS}|g" Makefile
+	[ -n ${CFLAGS} ] && sed -i "s|-O2|${CFLAGS}|g" Makefile-libbz2_so
+
+	make CC="gcc -m32" BIGFILES="" -f Makefile-libbz2_so
+	make clean
+	make CC="gcc -m32" BIGFILES=""
+	make PREFIX=$PWD/DESTDIR/usr install
+	mkdir -p $PKG/usr/lib32
+	cp -Rv DESTDIR/usr/lib/* $PKG/usr/lib32
+	cp -av libbz2.so* $PKG/usr/lib32
+
+}

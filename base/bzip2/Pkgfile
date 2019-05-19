@@ -18,6 +18,9 @@ patch -Np1 -i ../bzip2-$version-install_docs-1.patch
 sed -i 's@\(ln -s -f \)/bin/@\1@' Makefile
 sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 
+[[ -n ${CFLAGS} ]] && sed -i "s|-O2|${CFLAGS}|g" Makefile
+[[ -n ${CFLAGS} ]] && sed -i "s|-O2|${CFLAGS}|g" Makefile-libbz2_so
+
 make -f Makefile-libbz2_so
 make clean
 

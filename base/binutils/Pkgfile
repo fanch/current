@@ -11,24 +11,27 @@ source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz)
 build() {
 cd binutils-$version
 
+sed -i '/^SUBDIRS/s/doc//' bfd/Makefile.in
+
+	if [ -e /usr/lib32/libc.so ]; then
+		multilibopt="--enable-multilib --with-lib-path=/usr/lib:/lib:/usr/lib32"
+	fi
+	
 mkdir -v build
 cd build
 
-../configure --prefix=/usr \
---enable-gold \
---enable-ld=default \
---enable-plugins \
---enable-shared \
---disable-werror \
---enable-64-bit-bfd \
---with-system-zlib
-
-make tooldir=/usr
-
-# make  LDFLAGS="" -k check || true
-
-make tooldir=/usr DESTDIR=$PKG install
-rm -rf $PKG/usr/share/info/dir
+../configure --prefix=/usr       \
+	             --enable-gold       \
+				 --disable-nls       \
+	             --enable-ld=default \
+	             --enable-plugins    \
+	             --enable-shared     \
+	             --disable-werror    \
+	             --with-system-zlib  \
+		     $multilibopt
+	make tooldir=/usr
+	make tooldir=/usr DESTDIR=$PKG install
+	rm -fr $PKG/usr/share/info
 }
 devel() {
 cd $PKG

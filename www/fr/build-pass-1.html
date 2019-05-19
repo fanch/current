@@ -90,8 +90,9 @@ umask 022
 LFS=$LFS
 LC_ALL=POSIX
 LFS_TARGET=$(uname -m)-lfs-linux-gnu
+LFS_TARGET32=i686-lfs-linux-gnu
 PATH=/home/lfs/bin:/tools/bin:/bin:/usr/bin
-export LFS LC_ALL LFS_TARGET PATH " &gt; /home/lfs/.bashrc</kbd></pre>
+export LFS LC_ALL LFS_TARGET LFS_TARGET32 PATH " &gt; /home/lfs/.bashrc</kbd></pre>
     </ol>
      Il est temps de passer à la 2ème partie et donc de se connecter en utilisateur lfs:
      <pre class="command"><kbd>su - lfs</kbd></pre>
@@ -99,8 +100,7 @@ export LFS LC_ALL LFS_TARGET PATH " &gt; /home/lfs/.bashrc</kbd></pre>
      <h2>Partie LFS:</h2>
       <p>A partir de maintenant vous tapez toutes les commandes en compte lfs</p>
       <p>On récupère la dernière version des sources sous git:</p>
-     <pre class="command_user"><kbd>git clone git://github.com/fanch/current.git current
-git clone git://github.com/fanch/extra.git</kbd></pre>
+     <pre class="command_user"><kbd>git clone git://github.com/fanch/current.git current</kbd></pre>
     <p>Une fois terminée, un nouveau dossier a été créé: <b>current</b> On y entre et on lance le premier script:</p>
     <pre class="command_user"><kbd>cd current
 scripts/runmebeforepass1</kbd></pre>

@@ -1,0 +1,15 @@
+name=mpc
+version=1.1.0
+source=(https://ftp.gnu.org/gnu/mpc/mpc-$version.tar.gz)
+
+build() {
+cd mpc-$version
+
+./configure \
+		--prefix=/tools \
+		--build=${CLFS_HOST} \
+		--host=${CLFS_TARGET} \
+		--libdir=/tools/lib64
+	make
+	make install
+}

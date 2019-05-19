@@ -1,0 +1,24 @@
+name=cross-binutils
+version=2.30
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.bz2)
+build() {
+cd binutils-$version
+mkdir -v build
+cd build
+AR=ar AS=as \
+	../configure \
+		--prefix=/cross-tools \
+		--host=${CLFS_HOST} \
+		--target=${CLFS_TARGET} \
+		--with-sysroot=${CLFS} \
+		--with-lib-path=/tools/lib:/tools/lib64 \
+		--disable-nls \
+		--disable-static \
+		--enable-64-bit-bfd \
+		--enable-gold=yes \
+		--enable-plugins \
+		--enable-threads \
+		--disable-werror
+	make
+	make install
+}

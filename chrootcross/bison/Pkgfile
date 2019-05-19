@@ -1,0 +1,13 @@
+version=3.0.4
+source=(http://ftp.gnu.org/gnu/bison/bison-$version.tar.xz)
+
+build()
+{
+cd bison-$version
+./configure \
+		--prefix=/tools \
+		--build=${CLFS_HOST} \
+		--host=${CLFS_TARGET}	
+	make
+	make install
+}

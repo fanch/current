@@ -1,0 +1,11 @@
+name=zlib
+version=1.2.11
+source=(http://www.zlib.net/zlib-$version.tar.xz)
+build() {
+cd $name-$version
+./configure \
+		--prefix=/tools \
+		--libdir=/tools/lib64
+	make
+	make install
+}

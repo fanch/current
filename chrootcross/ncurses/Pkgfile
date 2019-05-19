@@ -1,0 +1,21 @@
+name=ncurses
+version=6.1
+source=(ftp://invisible-island.net/ncurses/ncurses-$version.tar.gz)
+
+build()
+{
+cd ncurses-$version
+./configure \
+		--prefix=/tools \
+		--with-shared \
+		--build=${CLFS_HOST} \
+		--host=${CLFS_TARGET} \
+		--without-debug \
+		--without-ada \
+		--enable-overwrite \
+        --enable-widec  \
+		--with-build-cc=gcc \
+		--libdir=/tools/lib64
+	make
+	make install
+}
